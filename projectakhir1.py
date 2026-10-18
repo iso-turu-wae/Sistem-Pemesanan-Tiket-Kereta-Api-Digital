@@ -1,52 +1,58 @@
 import json
 import os
 import time
-import random
 from datetime import datetime
 from prettytable import PrettyTable
 import pwinput
 
 FileUser = "users.json"
 FileJadwall = "jadwal.json"
-FileTrx = "transaksi.json"
 
-KelasTiket = ("Ekonomi", "Bisnis", "Eksluksif")
-topupsaldo = ""
+KelasTiket = ("Ekonomi", "Bisnis", "Eksekutif")
 Akundefault = [{"username": "admin", "password": "admin123", "role": "admin", "saldo": 0}]
 JadwalTiket = [
     {"Tiket": "T01", "nama": "Majapahit", "Dari": "Malang", "Tujuan": "Pasar Senen PP", "Jam": "09:45", "kelas": "Bisnis", "harga": 450000, "stok": 25},
-    {"Tiket": "T02", "nama": "Lodaya", "Dari": "Solo Balapan", "Tujuan": "Bandung PP", "Jam": "12:15", "Kelas": "Eksluksif", "harga": 610000, "stok": 35},
-    {"Tiket": "T03", "nama": "Malabar", "Dari": "Malang", "Tujuan": "Bandung PP", "Jam": "08:30", "Kelas": "Ekonomi", "harga": 200000, "stok": 10},
-    {"Tiket": "T04", "nama": "Taksaka", "Dari": "Yogyakarta", "Tujuan": "Gambir PP", "Jam": "15:00", "Kelas": "Eksluksif", "harga": 710000, "stok": 50},
-    {"Tiket": "T05", "nama": "Ambarawa Ekspres", "Dari": "Semarang Poncol", "Tujuan": "Surabaya Pasarturi PP", "Jam": "13:20", "kelas": "Bisnis", "harga": 350000, "stok":25},
+    {"Tiket": "T02", "nama": "Lodaya", "Dari": "Solo Balapan", "Tujuan": "Bandung PP", "Jam": "12:15", "kelas": "Eksekutif", "harga": 610000, "stok": 35},
+    {"Tiket": "T03", "nama": "Malabar", "Dari": "Malang", "Tujuan": "Bandung PP", "Jam": "08:30", "kelas": "Ekonomi", "harga": 200000, "stok": 10},
+    {"Tiket": "T04", "nama": "Taksaka", "Dari": "Yogyakarta", "Tujuan": "Gambir PP", "Jam": "15:00", "kelas": "Eksekutif", "harga": 710000, "stok": 50},
+    {"Tiket": "T05", "nama": "Ambarawa Ekspres", "Dari": "Semarang Poncol", "Tujuan": "Surabaya Pasarturi PP", "Jam": "13:20", "kelas": "Bisnis", "harga": 350000, "stok": 25},
     {"Tiket": "T06", "nama": "Ciremai", "Dari": "Bandung", "Tujuan": "Semarang Tawang PP", "Jam": "07:00", "kelas": "Ekonomi", "harga": 150000, "stok": 32},
 ]
 
 def cleanterminal():
     os.system("cls" if os.name == "nt" else "clear")
 
+def slow(detik=2):
+    try:
+        time.sleep(detik)
+    except ValueError:
+        time.sleep(1)
+
+
 def savedata(namafilee, data):
     try:
         with open(namafilee, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
         return True
-    except OSError:
+    except FileNotFoundError:
+        print("Erorr, folder/file tujuan gak ketemu.....")
+        return False
+    except (OSError, ValueError, TypeError):
         print("Erorr, data gak kesimpan ke file.....")
         return False
 
 def loaddata(namafilee, data):
     try:
         with open(namafilee, "r", encoding="utf-8") as f:
-            json.load(f)
-            print(f"File {namafilee}, membuat data...")
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"File {namafilee} belum ada, membuat data awal.....")
         savedata(namafilee, data)
         return data
-    except OSError:
-        print("Erorr, data gak ada file.....")
+    except ValueError:
+        print(f"File {namafilee} rusak, direset ke data awal.....")
+        savedata(namafilee, data)
         return data
-        
-def slow(detik=2):
-    time.sleep(detik)
 
 def detekinput(wm):
     while True:
@@ -58,67 +64,70 @@ def detekinput(wm):
         except ValueError as e:
             print(e)
 
-def detekangka(wm, minimal = 0):
+
+def detekangka(wm, minimal=0):
     while True:
         try:
             angka = int(input(wm))
             if angka >= minimal:
                 return angka
-            print("Ketik angka disini {minimal}!")
+            print(f"Ketik angka minimal {minimal}")
         except ValueError:
-            print("Input nya angka, hadehh....")
-        
+            print("Input nya angka men....")
+
 def konfirmasi(ipanbencib):
     while True:
         jawab = input(f"{ipanbencib} (y/n): ").lower()
-        try: 
+        try:
             if jawab in ("y", "n"):
                 return jawab == "y"
             raise ValueError("Ketik y atau n saja...")
         except ValueError as p:
-           print(p)
+            print(p)
 
 def rupiah(angka):
-    return "Rp{:,}".format(angka).replace(",", ".")
+    try:
+        return "Rp{:,}".format(angka).replace(",", ".")
+    except ValueError:
+        return "Rp0"
 
 def deteksiuser(daftar, key, nilai):
-    for item in daftar:
-        if item[key] == nilai:
-            return item
+    try:
+        for item in daftar:
+            if item[key] == nilai:
+                return item
+    except ValueError:
+        print("Data gak sesuai format.....")
+    except (KeyError, TypeError):
+        print("Data ada yang rusak/gak lengkap.....")
+    except FileNotFoundError:
+        print("File data gak ketemu.....")
     return None
+
+def cekjam(teks):
+    try:
+        return datetime.strptime(teks, "%H:%M").strftime("%H:%M")
+    except ValueError:
+        raise ValueError("Format jam salah, contoh 09:45....")
+    except FileNotFoundError:
+        print("File gak ketemu.....")
 
 # Menu
 def tampilanJadwal(jadwal):
-    if not jadwal:
-        print("Jadwal belum ada....")
-        return
-    tabel = PrettyTable(["Tiket", "Kereta", "Dari", "Tujuan", "Jam", "Kelas", "Harga", "Stok"])
-    for m in jadwal:
-       tabel.add_row([["Tiket"], m["nama"], m["Dari"], m["Tujuan"], m["jam"], m["kelas"], rupiah(m["harga"]), m["stok"]])
-    print(tabel)
-
-def transaksi(bayar):
-    if not bayar:
-        print("Belum ada transaksi....")
-        return
-    tabel = PrettyTable(["Tiket", "Waktu", "User", "Kereta", "Jumlah", "Total"])
-    for t in bayar:
-        tabel.add_row([t["Tiket"], t["waktu"], t["username"], t["kereta"], t["jumlah"], rupiah(t["total"])])
-    print(tabel)
-
-def invoice(trx):
-    print("\n ===========================")
-    print("   INVOICE TIKET KERETA API")
-    print("===========================")
-    print(f"Tiket Transaksi : {trx['Tiket']}")
-    print(f"Waktu          : {trx['waktu']}")
-    print(f"Penumpang      : {trx['username']}")
-    print(f"Kereta         : {trx['kereta']} ({trx['kelas']})")
-    print(f"Rute           : {trx['Dari']} -> {trx['tujuan']}")
-    print(f"Jam            : {trx['jam']}")
-    print(f"Jumlah Tiket   : {trx['jumlah']}")
-    print(f"Total Bayar    : {rupiah(trx['total'])}")
-    print("===========================")
+    try:
+        if not jadwal:
+            print("Jadwal belum ada....")
+            return
+        tabel = PrettyTable(["Tiket", "Kereta", "Dari", "Tujuan", "Jam", "Kelas", "Harga", "Stok"])
+        for m in jadwal:
+            tabel.add_row([m["Tiket"], m["nama"], m["Dari"], m["Tujuan"], m["Jam"], m["kelas"], rupiah(m["harga"]), m["stok"]])
+        print(tabel)
+    except ValueError:
+        print("Data jadwal gak sesuai format.....")
+    except (KeyError, TypeError):
+        print("Data jadwal ada yang rusak/gak lengkap.....")
+    except FileNotFoundError:
+        print("File jadwal gak ketemu.....")
 
 #  Auth
 def registrasi(users):
@@ -144,17 +153,25 @@ def registrasi(users):
     except FileNotFoundError:
         print("File user tidak ditemukan, registrasi gagal....")
     return users
+
 def login(users):
     print("===== LOGIN =====")
-    for ipanbenciben in range(1, 4):
-        username = input("Username: ")
-        password = pwinput.pwinput("Password: ")
-        for u in users:
-            if u["username"] == username and u["password"] == password:
-                print(f"Selamat datang, {username} 😊")
-                return u
-        print(f"Username/password salah! percobaan {ipanbenciben}/3")
-    print("Login gagal 3 kali kembali ke menu utama.....")
+    try:
+        for ipanbenciben in range(1, 4):
+            username = input("Username: ")
+            password = pwinput.pwinput("Password: ")
+            for u in users:
+                if u["username"] == username and u["password"] == password:
+                    print(f"Selamat datang, {username} 😊")
+                    return u
+            print(f"Username/password salah! percobaan {ipanbenciben}/3")
+        print("Login gagal 3 kali kembali ke menu utama.....")
+    except ValueError:
+        print("Input gak valid, login gagal.....")
+    except (KeyError, TypeError):
+        print("Data user rusak/gak lengkap, login gagal.....")
+    except FileNotFoundError:
+        print("File user gak ketemu, login gagal.....")
     return None
 
 #   ADMIN CRUD (Biar gklupa wkwk)
@@ -181,12 +198,9 @@ def addjadwal(jadwalss):
         print("Jadwal berhasil ditambahkan.")
     except ValueError as e:
         print(f"Gagal tambah jadwal: {e}")
-    except (KeyError, TypeError):
-        print("Data jadwal rusak/gak lengkap, jadwal gagal ditambahkan.....")
     except FileNotFoundError:
         print("File jadwal gak ketemu, jadwal gagal ditambahkan.....")
     return jadwalss
-
 
 def ubahjadwal(ipansukablame):
     print("==== UBAH JADWAL ====")
@@ -197,17 +211,17 @@ def ubahjadwal(ipansukablame):
             raise ValueError("Tiket tidak ditemukan😞")
         print("Kosongkan input jika tidak ingin mengubah.....")
         for field, label in (("nama", "Nama"), ("Dari", "Dari"), ("Tujuan", "Tujuan"), ("Jam", "Jam")):
-            baru = input(f"{label} [{o[field]}]: ").strip()
+            baru = input(f"{label} [{o[field]}]: ")
             if baru:
                 if field == "Jam":
                     try:
                         baru = cekjam(baru)
                     except ValueError:
-                        print("Format jam salah, jam tidak diubah.")
+                        print("Format jam salah, jam tidak diubah.....")
                         continue
                 o[field] = baru
         for field, label in (("harga", "Harga"), ("stok", "Stok")):
-            baru = input(f"{label} [{o[field]}]: ").strip()
+            baru = input(f"{label} [{o[field]}]: ")
             if baru:
                 try:
                     nilai = int(baru)
@@ -215,17 +229,14 @@ def ubahjadwal(ipansukablame):
                         raise ValueError
                     o[field] = nilai
                 except ValueError:
-                    print(f"{label} tidak valid, tidak diubah.")
+                    print(f"{label} tidak valid, tidak diubah.....")
         savedata(FileJadwall, ipansukablame)
         print("Jadwal berhasil diubah.....")
     except ValueError as e:
         print(e)
-    except (KeyError, TypeError):
-        print("Data ada yang rusak/gak lengkap, proses dibatalkan.....")
     except FileNotFoundError:
         print("File jadwal gak ketemu, perubahan gagal disimpan.....")
     return ipansukablame
-
 
 def hapusjadwal(jadwalss):
     print("=== HAPUS JADWAL ===")
@@ -242,26 +253,73 @@ def hapusjadwal(jadwalss):
             print("Dibatalkan....")
     except ValueError as e:
         print(e)
-    except (KeyError, TypeError):
-        print("Data ada yang rusak/gak lengkap, proses dibatalkan.....")
     except FileNotFoundError:
         print("File jadwal gak ketemu, penghapusan gagal disimpan.....")
     return jadwalss
 
+def menuadmin(user, jadwal):
+    while True:
+        try:
+            cleanterminal()
+            print("=== MENU ADMIN ===")
+            print("1. Lihat Jadwal\n2. Tambah Jadwal\n3. Ubah Jadwal\n4. Hapus Jadwal\n0. Logout")
+            pilih = input("Pilih: ")
+            cleanterminal()
+            if pilih == "1":
+                tampilanJadwal(jadwal)
+            elif pilih == "2":
+                addjadwal(jadwal)
+            elif pilih == "3":
+                ubahjadwal(jadwal)
+            elif pilih == "4":
+                hapusjadwal(jadwal)
+            elif pilih == "0":
+                return
+            else:
+                raise ValueError("Pilihan gak valid....")
+        except ValueError as e:
+            print(e)
+        except (KeyError, TypeError):
+            print("Data ada yang rusak/gak lengkap.....")
+        except FileNotFoundError:
+            print("File data gak ketemu.....")
+        input("\nTekan Enter untuk lanjut...")
 
-def laporan(datatrx):
-    print("=== LAPORAN RINGKAS ===")
-    try:
-        if not datatrx:
-            print("Belum ada transaksi....")
-            return
-        totalpendapatan = sum(t["total"] for t in datatrx)
-        terjual = {}
-        for t in datatrx:
-            terjual[t["kereta"]] = terjual.get(t["kereta"], 0) + t["jumlah"]
-        terlaris = max(terjual, key=terjual.get)
-        print(f"Total pendapatan : {rupiah(totalpendapatan)}")
-        print(f"Jumlah transaksi : {len(datatrx)}")
-        print(f"Kereta terlaris  : {terlaris} ({terjual[terlaris]} tiket)")
-    except (KeyError, ValueError, TypeError):
-        print("Data transaksi ada yang rusak, laporan gagal dibuat.....")
+def main():
+    users = loaddata(FileUser, Akundefault)
+    jadwal = loaddata(FileJadwall, JadwalTiket)
+    while True:
+        try:
+            cleanterminal()
+            print("=====================================")
+            print("   SISTEM PEMESANAN TIKET KERETA API")
+            print("=====================================")
+            print("1. Login\n2. Registrasi\n3. Keluar")
+            pilih = input("Pilih menu (1-3): ")
+            cleanterminal()
+            if pilih == "1":
+                user = login(users)
+                if user:
+                    slow()
+                    if user["role"] == "admin":
+                        menuadmin(user, jadwal)
+                    else:
+                        print("Menu user masih dikerjakan.....")
+                        slow()
+                else:
+                    slow()
+            elif pilih == "2":
+                registrasi(users)
+                slow()
+            elif pilih == "3":
+                print("Terima kasih, sampai jumpa.....")
+                break
+            else:
+                raise ValueError("Harus memilih 1/2/3....")
+        except ValueError as e:
+            print(e)
+            slow()
+        except FileNotFoundError:
+            print("File data gak ketemu.....")
+            slow()
+main()
