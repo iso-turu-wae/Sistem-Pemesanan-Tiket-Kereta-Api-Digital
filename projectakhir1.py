@@ -4,7 +4,7 @@ import time
 from datetime import datetime
 from prettytable import PrettyTable
 import pwinput
-
+topupsaldo = ""
 FileUser = "users.json"
 FileJadwall = "jadwal.json"
 
