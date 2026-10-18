@@ -160,72 +160,108 @@ def login(users):
 #   ADMIN CRUD (Biar gklupa wkwk)
 def addjadwal(jadwalss):
     print("=== TAMBAH JADWAL ===")
-    tikets = detekinput("Tiket kereta: ").upper()
-    if deteksiuser(jadwalss, "Tiket", tikets):
-        print("Kode sudah ada!")
-        return jadwalss
-    nama = detekinput("Nama kereta: ")
-    Dari = detekinput("Stasiun Dari: ")
-    tujuan = detekinput("Stasiun tujuan: ")
-    jam = detekinput("Jam berangkat (HH:MM): ")
-    for i, k in enumerate(KelasTiket, 1):
-        print(f"{i}. {k}")
-    pilih = detekangka("Pilih kelas: ", 1)
-    if pilih > len(KelasTiket):
-        print("Pilihan kelas tidak valid....")
-        return jadwalss
-    harga = detekangka("Harga tiket: ", 1)
-    stok = detekangka("Stok kursi: ", 0)
-    jadwalss.append({"Tiket": tikets, "nama": nama, "Dari": Dari, "tujuan": tujuan,
-                     "jam": jam, "kelas": KelasTiket[pilih - 1], "harga": harga, "stok": stok})
-    savedata(FileJadwall, jadwalss)
-    print("Jadwal berhasil ditambahkan.")
+    try:
+        tikets = detekinput("Kode tiket kereta: ").upper()
+        if deteksiuser(jadwalss, "Tiket", tikets):
+            raise ValueError("Kode sudah ada!")
+        nama = detekinput("Nama kereta: ")
+        Dari = detekinput("Stasiun Dari: ")
+        tujuan = detekinput("Stasiun tujuan: ")
+        jam = cekjam(detekinput("Jam berangkat (HH:MM): "))
+        for i, k in enumerate(KelasTiket, 1):
+            print(f"{i}. {k}")
+        pilih = detekangka("Pilih kelas: ", 1)
+        if pilih > len(KelasTiket):
+            raise ValueError("Pilihan kelas tidak valid....")
+        harga = detekangka("Harga tiket: ", 1)
+        stok = detekangka("Stok kursi: ", 0)
+        jadwalss.append({"Tiket": tikets, "nama": nama, "Dari": Dari, "Tujuan": tujuan,
+                         "Jam": jam, "kelas": KelasTiket[pilih - 1], "harga": harga, "stok": stok})
+        savedata(FileJadwall, jadwalss)
+        print("Jadwal berhasil ditambahkan.")
+    except ValueError as e:
+        print(f"Gagal tambah jadwal: {e}")
+    except (KeyError, TypeError):
+        print("Data jadwal rusak/gak lengkap, jadwal gagal ditambahkan.....")
+    except FileNotFoundError:
+        print("File jadwal gak ketemu, jadwal gagal ditambahkan.....")
     return jadwalss
+
 
 def ubahjadwal(ipansukablame):
     print("==== UBAH JADWAL ====")
-    tampilanJadwal(ipansukablame)
-    o = deteksiuser(ipansukablame, "Tiket", detekinput("Tiket kereta yang mau di reschedule"))
-    if not o:
-        print("Tiket tidak ditemukan😞")
-        return ipansukablame
-    print("Kosongkan input jika tidak ingin mengubah.....")
-    for field, label in (("nama", "Nama"), ("asal", "Asal"), ("tujuan", "Tujuan"), ("jam", "Jam")):
-        baru = input(f"{label} [{o[field]}]: ")
-        if baru:
-            o[field] = baru
-    for field, label in (("harga", "Harga"), ("stok", "Stok")):
-        baru = input(f"{label} [{o[field]}]: ")
-        if baru:
-            try:
-                nilai = int(baru)
-                if nilai < 0 or (field == "harga" and nilai == 0):
-                    raise ValueError
-                o[field] = nilai
-            except ValueError:
-                print(f"{label} tidak valid, tidak diubah.")
-    savedata(FileJadwall, ipansukablame)
-    print("Jadwal berhasil diubah.....")
-    return ipansukablame
-
-def hapusjadwal(haha):
-    print('=== Hapus Jadwal ===')
-    tampilanjadwal(haha)
     try:
-        hapus = detekiput("Masukkan kode tiket kereta yang mau dihapus: ")
-        o = deteksiuser(haha, 'Tiket', hapus)
+        tampilanJadwal(ipansukablame)
+        o = deteksiuser(ipansukablame, "Tiket", detekinput("Kode tiket yang mau di reschedule: ").upper())
         if not o:
-            print('Tiket tidak ditemukan')
-            return haha
-        konfirm = input('Hapus tiket?(y/n):')
-            if konfirm == 'y':
-            haha.remove(o)
-            savedata(FileJadwall, haha)
-            print('jadwal dihapus...')
-        else:
-            print('Jadwala gak dihapus')
+            raise ValueError("Tiket tidak ditemukan😞")
+        print("Kosongkan input jika tidak ingin mengubah.....")
+        for field, label in (("nama", "Nama"), ("Dari", "Dari"), ("Tujuan", "Tujuan"), ("Jam", "Jam")):
+            baru = input(f"{label} [{o[field]}]: ").strip()
+            if baru:
+                if field == "Jam":
+                    try:
+                        baru = cekjam(baru)
+                    except ValueError:
+                        print("Format jam salah, jam tidak diubah.")
+                        continue
+                o[field] = baru
+        for field, label in (("harga", "Harga"), ("stok", "Stok")):
+            baru = input(f"{label} [{o[field]}]: ").strip()
+            if baru:
+                try:
+                    nilai = int(baru)
+                    if nilai < 0 or (field == "harga" and nilai == 0):
+                        raise ValueError
+                    o[field] = nilai
+                except ValueError:
+                    print(f"{label} tidak valid, tidak diubah.")
+        savedata(FileJadwall, ipansukablame)
+        print("Jadwal berhasil diubah.....")
     except ValueError as e:
         print(e)
-    return haha
+    except (KeyError, TypeError):
+        print("Data ada yang rusak/gak lengkap, proses dibatalkan.....")
+    except FileNotFoundError:
+        print("File jadwal gak ketemu, perubahan gagal disimpan.....")
+    return ipansukablame
 
 
+def hapusjadwal(jadwalss):
+    print("=== HAPUS JADWAL ===")
+    try:
+        tampilanJadwal(jadwalss)
+        o = deteksiuser(jadwalss, "Tiket", detekinput("Kode tiket yang mau dihapus: ").upper())
+        if not o:
+            raise ValueError("Tiket tidak ditemukan😞")
+        if konfirmasi(f"Yakin mau hapus {o['nama']}?"):
+            jadwalss.remove(o)
+            savedata(FileJadwall, jadwalss)
+            print("Jadwal berhasil dihapus.....")
+        else:
+            print("Dibatalkan....")
+    except ValueError as e:
+        print(e)
+    except (KeyError, TypeError):
+        print("Data ada yang rusak/gak lengkap, proses dibatalkan.....")
+    except FileNotFoundError:
+        print("File jadwal gak ketemu, penghapusan gagal disimpan.....")
+    return jadwalss
+
+
+def laporan(datatrx):
+    print("=== LAPORAN RINGKAS ===")
+    try:
+        if not datatrx:
+            print("Belum ada transaksi....")
+            return
+        totalpendapatan = sum(t["total"] for t in datatrx)
+        terjual = {}
+        for t in datatrx:
+            terjual[t["kereta"]] = terjual.get(t["kereta"], 0) + t["jumlah"]
+        terlaris = max(terjual, key=terjual.get)
+        print(f"Total pendapatan : {rupiah(totalpendapatan)}")
+        print(f"Jumlah transaksi : {len(datatrx)}")
+        print(f"Kereta terlaris  : {terlaris} ({terjual[terlaris]} tiket)")
+    except (KeyError, ValueError, TypeError):
+        print("Data transaksi ada yang rusak, laporan gagal dibuat.....")
