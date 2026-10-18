@@ -196,3 +196,21 @@ def ubahjadwal(ipansukablame):
     savedata(FileJadwall, ipansukablame)
     print("Jadwal berhasil diubah.....")
     return ipansukablame
+
+def hapusjadwal(haha):
+    print('=== Hapus Jadwal ===')
+    tampilanjadwal(haha)
+    hapus = detekiput("Masukkan kode tiket kereta yang mau dihapus: ")
+    o = deteksiuser(haha, 'Tiket', hapus)
+    if not o:
+        print('Tiket tidak ditemukan')
+        return haha
+    konfirm = input('Hapus tiket?(y/n):')
+    if konfirm == 'y':
+        haha.remove(o)
+        savedata(FileJadwall, haha)
+        print('jadwal dihapus...')
+    else:
+        print('Jadwala gak dihapus')
+    return haha
+        
