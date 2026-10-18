@@ -33,7 +33,18 @@ def savedata(namafilee, data):
     except OSError:
         print("Erorr, data gak kesimpan ke file.....")
         return False
- 
+
+def loaddata(namafilee, data):
+    try:
+        with open(namafilee, "r", encoding="utf-8") as f:
+            json.load(f)
+            print(f"File {namafilee}, membuat data...")
+        savedata(namafilee, data)
+        return data
+    except OSError:
+        print("Erorr, data gak ada file.....")
+        return data
+        
 def slow(detik=2):
     time.sleep(detik)
 
@@ -200,18 +211,21 @@ def ubahjadwal(ipansukablame):
 def hapusjadwal(haha):
     print('=== Hapus Jadwal ===')
     tampilanjadwal(haha)
-    hapus = detekiput("Masukkan kode tiket kereta yang mau dihapus: ")
-    o = deteksiuser(haha, 'Tiket', hapus)
-    if not o:
-        print('Tiket tidak ditemukan')
-        return haha
-    konfirm = input('Hapus tiket?(y/n):')
-    if konfirm == 'y':
-        haha.remove(o)
-        savedata(FileJadwall, haha)
-        print('jadwal dihapus...')
-    else:
-        print('Jadwala gak dihapus')
-except ValueError as e:
-    print(e)
-return haha
+    try:
+        hapus = detekiput("Masukkan kode tiket kereta yang mau dihapus: ")
+        o = deteksiuser(haha, 'Tiket', hapus)
+        if not o:
+            print('Tiket tidak ditemukan')
+            return haha
+        konfirm = input('Hapus tiket?(y/n):')
+            if konfirm == 'y':
+            haha.remove(o)
+            savedata(FileJadwall, haha)
+            print('jadwal dihapus...')
+        else:
+            print('Jadwala gak dihapus')
+    except ValueError as e:
+        print(e)
+    return haha
+
+
