@@ -212,5 +212,6 @@ def hapusjadwal(haha):
         print('jadwal dihapus...')
     else:
         print('Jadwala gak dihapus')
-    return haha
-        
+except ValueError as e:
+    print(e)
+return haha
