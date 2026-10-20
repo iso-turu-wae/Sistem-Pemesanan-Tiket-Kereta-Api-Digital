@@ -27,7 +27,8 @@ def slow(detik=2):
         time.sleep(detik)
     except ValueError:
         time.sleep(1)
-
+    except KeyboardInterrupt:
+        time.sleep(1)
 
 def savedata(namafilee, data):
     try:
