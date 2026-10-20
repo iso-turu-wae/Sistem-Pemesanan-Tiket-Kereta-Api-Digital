@@ -8,6 +8,7 @@ topupsaldo = ""
 FileUser = "users.json"
 FileJadwall = "jadwal.json"
 
+
 KelasTiket = ("Ekonomi", "Bisnis", "Eksekutif")
 Akundefault = [{"username": "admin", "password": "admin123", "role": "admin", "saldo": 0}]
 JadwalTiket = [
@@ -29,6 +30,12 @@ def slow(detik=2):
         time.sleep(1)
     except KeyboardInterrupt:
         time.sleep(1)
+
+def tekanenter():
+    try:
+        input("\nTekan Enter untuk lanjut...")
+    except (KeyboardInterrupt, EOFError):
+        pass
 
 def savedata(namafilee, data):
     try:
@@ -110,10 +117,21 @@ def cekjam(teks):
         return datetime.strptime(teks, "%H:%M").strftime("%H:%M")
     except ValueError:
         raise ValueError("Format jam salah, contoh 09:45....")
-    except FileNotFoundError:
-        print("File gak ketemu.....")
 
-# Menu
+def detekjam(wm):
+    while True:
+        try:
+            return cekjam(detekinput(wm))
+        except ValueError as e:
+            print(e)
+
+def detekkode(wm):
+    while True:
+        kode = detekinput(wm).upper()
+        if kode.startswith("T") and len(kode) > 1 and " " not in kode:
+            return kode
+        print("Kode tiket harus diawali huruf T dan tanpa spasi, contoh T07....")
+
 def tampilanJadwal(jadwal):
     try:
         if not jadwal:
@@ -130,7 +148,6 @@ def tampilanJadwal(jadwal):
     except FileNotFoundError:
         print("File jadwal gak ketemu.....")
 
-#  Auth
 def registrasi(users):
     print("=== REGISTRASI ===")
     try:
@@ -153,6 +170,8 @@ def registrasi(users):
         print(ipan)
     except FileNotFoundError:
         print("File user tidak ditemukan, registrasi gagal....")
+    except (KeyboardInterrupt, EOFError):
+        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return users
 
 def login(users):
@@ -173,19 +192,20 @@ def login(users):
         print("Data user rusak/gak lengkap, login gagal.....")
     except FileNotFoundError:
         print("File user gak ketemu, login gagal.....")
+    except (KeyboardInterrupt, EOFError):
+        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return None
 
-#   ADMIN CRUD (Biar gklupa wkwk)
 def addjadwal(jadwalss):
     print("=== TAMBAH JADWAL ===")
     try:
-        tikets = detekinput("Kode tiket kereta: ").upper()
+        tikets = detekkode("Kode tiket kereta (awali dengan T, contoh T07): ")
         if deteksiuser(jadwalss, "Tiket", tikets):
             raise ValueError("Kode sudah ada!")
         nama = detekinput("Nama kereta: ")
         Dari = detekinput("Stasiun Dari: ")
         tujuan = detekinput("Stasiun tujuan: ")
-        jam = cekjam(detekinput("Jam berangkat (HH:MM): "))
+        jam = detekjam("Jam berangkat (HH:MM): ")
         for i, k in enumerate(KelasTiket, 1):
             print(f"{i}. {k}")
         pilih = detekangka("Pilih kelas: ", 1)
@@ -201,6 +221,8 @@ def addjadwal(jadwalss):
         print(f"Gagal tambah jadwal: {e}")
     except FileNotFoundError:
         print("File jadwal gak ketemu, jadwal gagal ditambahkan.....")
+    except (KeyboardInterrupt, EOFError):
+        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return jadwalss
 
 def ubahjadwal(ipansukablame):
@@ -215,10 +237,14 @@ def ubahjadwal(ipansukablame):
             baru = input(f"{label} [{o[field]}]: ")
             if baru:
                 if field == "Jam":
-                    try:
-                        baru = cekjam(baru)
-                    except ValueError:
-                        print("Format jam salah, jam tidak diubah.....")
+                    while baru:
+                        try:
+                            baru = cekjam(baru)
+                            break
+                        except ValueError as err:
+                            print(err)
+                            baru = input("Jam [kosongkan jika batal]: ")
+                    if not baru:
                         continue
                 o[field] = baru
         for field, label in (("harga", "Harga"), ("stok", "Stok")):
@@ -237,6 +263,8 @@ def ubahjadwal(ipansukablame):
         print(e)
     except FileNotFoundError:
         print("File jadwal gak ketemu, perubahan gagal disimpan.....")
+    except (KeyboardInterrupt, EOFError):
+        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return ipansukablame
 
 def hapusjadwal(jadwalss):
@@ -256,6 +284,8 @@ def hapusjadwal(jadwalss):
         print(e)
     except FileNotFoundError:
         print("File jadwal gak ketemu, penghapusan gagal disimpan.....")
+    except (KeyboardInterrupt, EOFError):
+        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return jadwalss
 
 def menuadmin(user, jadwal):
@@ -284,7 +314,9 @@ def menuadmin(user, jadwal):
             print("Data ada yang rusak/gak lengkap.....")
         except FileNotFoundError:
             print("File data gak ketemu.....")
-        input("\nTekan Enter untuk lanjut...")
+        except (KeyboardInterrupt, EOFError):
+            print("\nJangan pencet Ctrl, kembali ke menu utama...")
+        tekanenter()
 
 def main():
     users = loaddata(FileUser, Akundefault)
@@ -323,4 +355,11 @@ def main():
         except FileNotFoundError:
             print("File data gak ketemu.....")
             slow()
-main()
+        except (KeyboardInterrupt, EOFError):
+            print("\nJangan pencet Ctrl, kembali ke menu utama...")
+            slow()
+
+try:
+    main()
+except (KeyboardInterrupt, EOFError):
+    print("\nProgram dihentikan.....")
