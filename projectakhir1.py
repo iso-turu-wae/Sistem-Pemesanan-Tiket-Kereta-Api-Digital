@@ -288,6 +288,24 @@ def hapusjadwal(jadwalss):
         print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return jadwalss
 
+def topsaldo(user, users):
+    print('=== TOP UP SALDO===')
+    try:
+        uang = detekangka('Masukan nominal top up: ')
+        user['saldo'] += uang
+        for u in users:
+            if u['usernam'] == user['username']:
+                u['saldo'] = user['saldo']
+        savedata(Fileuser, users)
+        print('Saldo Sekarang: {rupiah(user['saldo'])}')
+    except ValueError as e:
+        print(e)
+    except FileNotFoundError:
+        print("File user tidak ditemukan, top-up gagal disimpan.....")
+    except (KeyboardInterrupt, EOFError):
+        print("\nJangan pencet Ctrl, dibatalkan...")
+    return None
+
 def menuadmin(user, jadwal):
     while True:
         try:
@@ -304,6 +322,34 @@ def menuadmin(user, jadwal):
                 ubahjadwal(jadwal)
             elif pilih == "4":
                 hapusjadwal(jadwal)
+            elif pilih == "0":
+                return
+            else:
+                raise ValueError("Pilihan gak valid....")
+        except ValueError as e:
+            print(e)
+        except (KeyError, TypeError):
+            print("Data ada yang rusak/gak lengkap.....")
+        except FileNotFoundError:
+            print("File data gak ketemu.....")
+        except (KeyboardInterrupt, EOFError):
+            print("\nJangan pencet Ctrl, kembali ke menu utama...")
+        tekanenter()
+
+def menuuser(user, jadwal, users):
+    while True:
+        try:
+            cleanterminal()
+            print('=== MENU USER ===')
+            print('1. Lihat Jadwal\n2. Saldo\n3. Pesan Tiket\n4. Saldo\n0. Logout')
+            pilih = input("Pilih: ")
+            cleanterminal()
+            if pilih == "1":
+                tampilanJadwal(jadwal)
+            elif pilih == "2":
+                topsaldo(user, users)
+            elif pilih == "3":
+                addjadwal(user, jdawal, users)
             elif pilih == "0":
                 return
             else:
