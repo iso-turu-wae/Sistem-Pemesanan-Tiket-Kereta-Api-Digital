@@ -1,15 +1,18 @@
 import json
 import os
 import time
+import random
 from datetime import datetime
 from prettytable import PrettyTable
 import pwinput
-topupsaldo = ""
+
 FileUser = "users.json"
 FileJadwall = "jadwal.json"
+FileRiwayat = "riwayat.json"
 
 
 KelasTiket = ("Ekonomi", "Bisnis", "Eksekutif")
+RoleUser = ("user", "admin")
 Akundefault = [{"username": "admin", "password": "admin123", "role": "admin", "saldo": 0}]
 JadwalTiket = [
     {"Tiket": "T01", "nama": "Majapahit", "Dari": "Malang", "Tujuan": "Pasar Senen PP", "Jam": "09:45", "kelas": "Bisnis", "harga": 450000, "stok": 25},
@@ -30,6 +33,22 @@ def slow(detik=2):
         time.sleep(1)
     except KeyboardInterrupt:
         time.sleep(1)
+
+def inputaman(wm):
+    while True:
+        try:
+            return input(wm)
+        except (KeyboardInterrupt, EOFError):
+            print("\nDeteced ctrl....")
+            slow(1)
+
+def passaman(wm, mask="*"):
+    while True:
+        try:
+            return pwinput.pwinput(wm, mask=mask)
+        except (KeyboardInterrupt, EOFError):
+            print("\nDeteced ctrl....")
+            slow(1)
 
 def tekanenter():
     try:
@@ -64,7 +83,7 @@ def loaddata(namafilee, data):
 
 def detekinput(wm):
     while True:
-        teks = input(wm).strip()
+        teks = inputaman(wm).strip()
         try:
             if teks:
                 return teks
@@ -76,7 +95,7 @@ def detekinput(wm):
 def detekangka(wm, minimal=0):
     while True:
         try:
-            angka = int(input(wm))
+            angka = int(inputaman(wm))
             if angka >= minimal:
                 return angka
             print(f"Ketik angka minimal {minimal}")
@@ -85,7 +104,7 @@ def detekangka(wm, minimal=0):
 
 def konfirmasi(ipanbencib):
     while True:
-        jawab = input(f"{ipanbencib} (y/n): ").lower()
+        jawab = inputaman(f"{ipanbencib} (y/n): ").lower()
         try:
             if jawab in ("y", "n"):
                 return jawab == "y"
@@ -132,6 +151,30 @@ def detekkode(wm):
             return kode
         print("Kode tiket harus diawali huruf T dan tanpa spasi, contoh T07....")
 
+def cekusername(users, username):
+    if username == "":
+        raise ValueError("Username tidak boleh kosong....")
+    if len(username) < 5:
+        raise ValueError("Username minimal 5 karakter....")
+    if deteksiuser(users, "username", username):
+        raise ValueError("Username sudah dipakai....")
+    return username
+
+def cekpassword(password):
+    if password == "":
+        raise ValueError("Password tidak boleh kosong....")
+    if len(password) < 6:
+        raise ValueError("Password minimal 6 karakter....")
+    return password
+
+def buatkode(riwayat):
+    kode = f"TRX{random.randint(10000, 99999)}"
+    while deteksiuser(riwayat, "kode", kode):
+        kode = f"TRX{random.randint(10000, 99999)}"
+    return kode
+
+# ================== TAMPILAN ==================
+
 def tampilanJadwal(jadwal):
     try:
         if not jadwal:
@@ -148,21 +191,68 @@ def tampilanJadwal(jadwal):
     except FileNotFoundError:
         print("File jadwal gak ketemu.....")
 
+def tampilanUser(users):
+    try:
+        if not users:
+            print("User belum ada....")
+            return
+        tabel = PrettyTable(["No", "Username", "Role", "Saldo"])
+        for i, u in enumerate(users, 1):
+            tabel.add_row([i, u["username"], u["role"], rupiah(u["saldo"])])
+        print(tabel)
+    except ValueError:
+        print("Data user gak sesuai format.....")
+    except (KeyError, TypeError):
+        print("Data user ada yang rusak/gak lengkap.....")
+
+def tampilanRiwayat(riwayat, semua=False):
+    try:
+        if not riwayat:
+            print("Belum ada transaksi....")
+            return
+        kolom = ["Kode", "Waktu", "Kereta", "Rute", "Jam", "Kelas", "Jml", "Total"]
+        if semua:
+            kolom.insert(1, "User")
+        tabel = PrettyTable(kolom)
+        for t in riwayat:
+            baris = [t["kode"], t["waktu"], t["kereta"], f"{t['dari']} - {t['tujuan']}", t["jam"], t["kelas"], t["jumlah"], rupiah(t["total"])]
+            if semua:
+                baris.insert(1, t["username"])
+            tabel.add_row(baris)
+        print(tabel)
+    except ValueError:
+        print("Data riwayat gak sesuai format.....")
+    except (KeyError, TypeError):
+        print("Data riwayat ada yang rusak/gak lengkap.....")
+
+def cetakinvoice(trx):
+    try:
+        print("=" * 42)
+        print("          INVOICE PEMBELIAN TIKET")
+        print("=" * 42)
+        print(f"Kode Transaksi : {trx['kode']}")
+        print(f"Waktu          : {trx['waktu']}")
+        print(f"Nama Pemesan   : {trx['username']}")
+        print("-" * 42)
+        print(f"Kereta         : {trx['kereta']} ({trx['kelas']})")
+        print(f"Rute           : {trx['dari']} - {trx['tujuan']}")
+        print(f"Jam Berangkat  : {trx['jam']}")
+        print(f"Harga Satuan   : {rupiah(trx['harga'])}")
+        print(f"Jumlah Tiket   : {trx['jumlah']}")
+        print("-" * 42)
+        print(f"TOTAL BAYAR    : {rupiah(trx['total'])}")
+        print("=" * 42)
+        print("   Terima kasih, selamat menikmati perjalanan!")
+    except (KeyError, TypeError):
+        print("Data invoice ada yang rusak/gak lengkap.....")
+
+# ================== AUTH ==================
+
 def registrasi(users):
     print("=== REGISTRASI ===")
     try:
-        username = input("Masukkan username (min 5 karakter): ")
-        if username == "":
-            raise ValueError("Username tidak boleh kosong....")
-        if len(username) < 5:
-            raise ValueError("Username minimal 5 karakter....")
-        if deteksiuser(users, "username", username):
-            raise ValueError("Username sudah dipakai....")
-        password = pwinput.pwinput("Password (min. 6 karakter): ", mask="*")
-        if password == "":
-            raise ValueError("Password tidak boleh kosong....")
-        if len(password) < 6:
-            raise ValueError("Password minimal 6 karakter....")
+        username = cekusername(users, inputaman("Masukkan username (min 5 karakter): "))
+        password = cekpassword(passaman("Password (min. 6 karakter): "))
         users.append({"username": username, "password": password, "role": "user", "saldo": 0})
         savedata(FileUser, users)
         print("Registrasi berhasil! Silakan login....")
@@ -170,16 +260,14 @@ def registrasi(users):
         print(ipan)
     except FileNotFoundError:
         print("File user tidak ditemukan, registrasi gagal....")
-    except (KeyboardInterrupt, EOFError):
-        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return users
 
 def login(users):
     print("===== LOGIN =====")
     try:
         for ipanbenciben in range(1, 4):
-            username = input("Username: ")
-            password = pwinput.pwinput("Password: ")
+            username = inputaman("Username: ")
+            password = passaman("Password: ")
             for u in users:
                 if u["username"] == username and u["password"] == password:
                     print(f"Selamat datang, {username} 😊")
@@ -192,9 +280,9 @@ def login(users):
         print("Data user rusak/gak lengkap, login gagal.....")
     except FileNotFoundError:
         print("File user gak ketemu, login gagal.....")
-    except (KeyboardInterrupt, EOFError):
-        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return None
+
+# ================== CRUD JADWAL (ADMIN) ==================
 
 def addjadwal(jadwalss):
     print("=== TAMBAH JADWAL ===")
@@ -221,8 +309,6 @@ def addjadwal(jadwalss):
         print(f"Gagal tambah jadwal: {e}")
     except FileNotFoundError:
         print("File jadwal gak ketemu, jadwal gagal ditambahkan.....")
-    except (KeyboardInterrupt, EOFError):
-        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return jadwalss
 
 def ubahjadwal(ipansukablame):
@@ -234,7 +320,7 @@ def ubahjadwal(ipansukablame):
             raise ValueError("Tiket tidak ditemukan😞")
         print("Kosongkan input jika tidak ingin mengubah.....")
         for field, label in (("nama", "Nama"), ("Dari", "Dari"), ("Tujuan", "Tujuan"), ("Jam", "Jam")):
-            baru = input(f"{label} [{o[field]}]: ")
+            baru = inputaman(f"{label} [{o[field]}]: ")
             if baru:
                 if field == "Jam":
                     while baru:
@@ -243,12 +329,23 @@ def ubahjadwal(ipansukablame):
                             break
                         except ValueError as err:
                             print(err)
-                            baru = input("Jam [kosongkan jika batal]: ")
+                            baru = inputaman("Jam [kosongkan jika batal]: ")
                     if not baru:
                         continue
                 o[field] = baru
+        for i, k in enumerate(KelasTiket, 1):
+            print(f"{i}. {k}")
+        pilihkelas = inputaman(f"Kelas [{o['kelas']}] (pilih nomor): ")
+        if pilihkelas:
+            try:
+                nomor = int(pilihkelas)
+                if nomor < 1 or nomor > len(KelasTiket):
+                    raise ValueError
+                o["kelas"] = KelasTiket[nomor - 1]
+            except ValueError:
+                print("Kelas tidak valid, tidak diubah.....")
         for field, label in (("harga", "Harga"), ("stok", "Stok")):
-            baru = input(f"{label} [{o[field]}]: ")
+            baru = inputaman(f"{label} [{o[field]}]: ")
             if baru:
                 try:
                     nilai = int(baru)
@@ -263,8 +360,6 @@ def ubahjadwal(ipansukablame):
         print(e)
     except FileNotFoundError:
         print("File jadwal gak ketemu, perubahan gagal disimpan.....")
-    except (KeyboardInterrupt, EOFError):
-        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return ipansukablame
 
 def hapusjadwal(jadwalss):
@@ -284,35 +379,231 @@ def hapusjadwal(jadwalss):
         print(e)
     except FileNotFoundError:
         print("File jadwal gak ketemu, penghapusan gagal disimpan.....")
-    except (KeyboardInterrupt, EOFError):
-        print("\nJangan pencet Ctrl, kembali ke menu utama...")
     return jadwalss
 
-def topsaldo(user, users):
-    print('=== TOP UP SALDO===')
+# ================== CRUD USER (ADMIN) ==================
+
+def tambahuser(users):
+    print("=== TAMBAH USER ===")
     try:
-        uang = detekangka('Masukan nominal top up: ')
-        user['saldo'] += uang
-        for u in users:
-            if u['usernam'] == user['username']:
-                u['saldo'] = user['saldo']
-        savedata(Fileuser, users)
-        print('Saldo Sekarang: {rupiah(user['saldo'])}')
+        username = cekusername(users, inputaman("Username (min 5 karakter): "))
+        password = cekpassword(passaman("Password (min. 6 karakter): "))
+        for i, r in enumerate(RoleUser, 1):
+            print(f"{i}. {r}")
+        pilih = detekangka("Pilih role: ", 1)
+        if pilih > len(RoleUser):
+            raise ValueError("Pilihan role tidak valid....")
+        saldo = detekangka("Saldo awal: ", 0)
+        users.append({"username": username, "password": password, "role": RoleUser[pilih - 1], "saldo": saldo})
+        savedata(FileUser, users)
+        print("User berhasil ditambahkan.....")
+    except ValueError as e:
+        print(f"Gagal tambah user: {e}")
+    except FileNotFoundError:
+        print("File user gak ketemu, user gagal ditambahkan.....")
+    return users
+
+def ubahuser(users, riwayat):
+    print("=== UBAH USER ===")
+    try:
+        tampilanUser(users)
+        o = deteksiuser(users, "username", detekinput("Username yang mau diubah: "))
+        if not o:
+            raise ValueError("User tidak ditemukan😞")
+        print("Kosongkan input jika tidak ingin mengubah.....")
+        lama = o["username"]
+        usernamebaru = inputaman(f"Username [{lama}]: ")
+        if usernamebaru and usernamebaru != lama:
+            cekusername(users, usernamebaru)
+        else:
+            usernamebaru = ""
+        passwordbaru = passaman("Password baru [kosongkan jika tidak diubah]: ")
+        if passwordbaru:
+            cekpassword(passwordbaru)
+        saldobaru = inputaman(f"Saldo [{rupiah(o['saldo'])}]: ")
+        if usernamebaru:
+            o["username"] = usernamebaru
+            for t in riwayat:
+                if t["username"] == lama:
+                    t["username"] = usernamebaru
+            savedata(FileRiwayat, riwayat)
+        if passwordbaru:
+            o["password"] = passwordbaru
+        if saldobaru:
+            try:
+                nilai = int(saldobaru)
+                if nilai < 0:
+                    raise ValueError
+                o["saldo"] = nilai
+            except ValueError:
+                print("Saldo tidak valid, tidak diubah.....")
+        savedata(FileUser, users)
+        print("User berhasil diubah.....")
+    except ValueError as e:
+        print(e)
+    except FileNotFoundError:
+        print("File user gak ketemu, perubahan gagal disimpan.....")
+    return users
+
+def hapususer(users, admin):
+    print("=== HAPUS USER ===")
+    try:
+        tampilanUser(users)
+        o = deteksiuser(users, "username", detekinput("Username yang mau dihapus: "))
+        if not o:
+            raise ValueError("User tidak ditemukan😞")
+        if o["username"] == admin["username"]:
+            raise ValueError("Gak bisa hapus akun yang lagi dipakai login....")
+        if konfirmasi(f"Yakin mau hapus user {o['username']}?"):
+            users.remove(o)
+            savedata(FileUser, users)
+            print("User berhasil dihapus.....")
+        else:
+            print("Dibatalkan....")
+    except ValueError as e:
+        print(e)
+    except FileNotFoundError:
+        print("File user gak ketemu, penghapusan gagal disimpan.....")
+    return users
+
+# ================== FITUR USER ==================
+
+def topsaldo(user, users):
+    print("=== TOP UP SALDO ===")
+    try:
+        print(f"Saldo sekarang: {rupiah(user['saldo'])}")
+        uang = detekangka("Masukan nominal top up: ", 1)
+
+        if uang > 100000000:
+            raise ValueError("Nominal top up maksimal Rp100.000.000!")
+
+        user["saldo"] += uang
+        savedata(FileUser, users)
+        print(f"Top up berhasil! Saldo sekarang: {rupiah(user['saldo'])}")
     except ValueError as e:
         print(e)
     except FileNotFoundError:
         print("File user tidak ditemukan, top-up gagal disimpan.....")
-    except (KeyboardInterrupt, EOFError):
-        print("\nJangan pencet Ctrl, dibatalkan...")
+    
+    return user
+
+def pesantiket(user, jadwal, users, riwayat):
+    print("=== PESAN TIKET ===")
+    try:
+        if not jadwal:
+            print("Jadwal belum ada....")
+            return None
+        tampilanJadwal(jadwal)
+        print(f"Saldo kamu: {rupiah(user['saldo'])}")
+        o = deteksiuser(jadwal, "Tiket", detekkode("Kode tiket yang mau dipesan: "))
+        if not o:
+            raise ValueError("Tiket tidak ditemukan😞")
+        if o["stok"] <= 0:
+            raise ValueError("Stok tiket habis....")
+        jumlah = detekangka(f"Jumlah tiket (maks {o['stok']}): ", 1)
+        if jumlah > o["stok"]:
+            raise ValueError("Stok gak cukup....")
+        total = o["harga"] * jumlah
+        if user["saldo"] < total:
+            raise ValueError(f"Saldo gak cukup! Total {rupiah(total)}, saldo kamu {rupiah(user['saldo'])}")
+        print(f"Total bayar: {rupiah(total)}")
+        if not konfirmasi("Lanjut bayar pakai saldo?"):
+            print("Dibatalkan....")
+            return None
+        user["saldo"] -= total
+        o["stok"] -= jumlah
+        trx = {
+            "kode": buatkode(riwayat),
+            "waktu": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "username": user["username"],
+            "Tiket": o["Tiket"],
+            "kereta": o["nama"],
+            "dari": o["Dari"],
+            "tujuan": o["Tujuan"],
+            "jam": o["Jam"],
+            "kelas": o["kelas"],
+            "harga": o["harga"],
+            "jumlah": jumlah,
+            "total": total,
+        }
+        riwayat.append(trx)
+        savedata(FileUser, users)
+        savedata(FileJadwall, jadwal)
+        savedata(FileRiwayat, riwayat)
+        print("Pembayaran berhasil!\n")
+        cetakinvoice(trx)
+        return trx
+    except ValueError as e:
+        print(e)
+    except FileNotFoundError:
+        print("File data gak ketemu, transaksi gagal disimpan.....")
     return None
 
-def menuadmin(user, jadwal):
+def riwayatsaya(user, riwayat):
+    print("=== RIWAYAT TRANSAKSI SAYA ===")
+    try:
+        punyaku = [t for t in riwayat if t["username"] == user["username"]]
+        tampilanRiwayat(punyaku)
+        return punyaku
+    except (KeyError, TypeError):
+        print("Data riwayat ada yang rusak/gak lengkap.....")
+    return []
+
+def ubahpassword(user, users):
+    print("=== UBAH PASSWORD ===")
+    try:
+        lama = passaman("Password lama: ")
+        if lama != user["password"]:
+            raise ValueError("Password lama salah....")
+        baru = cekpassword(passaman("Password baru (min. 6 karakter): "))
+        ulang = passaman("Ulangi password baru: ")
+        if baru != ulang:
+            raise ValueError("Password baru gak sama....")
+        user["password"] = baru
+        savedata(FileUser, users)
+        print("Password berhasil diubah.....")
+    except ValueError as e:
+        print(e)
+    except FileNotFoundError:
+        print("File user gak ketemu, perubahan gagal disimpan.....")
+    return user
+
+# ================== LAPORAN (ADMIN) ==================
+
+def laporan(riwayat):
+    print("=== LAPORAN RINGKAS ===")
+    try:
+        if not riwayat:
+            print("Belum ada transaksi....")
+            return None
+        totalpendapatan = sum(t["total"] for t in riwayat)
+        terjual = {}
+        for t in riwayat:
+            terjual[t["kereta"]] = terjual.get(t["kereta"], 0) + t["jumlah"]
+        terlaris = max(terjual, key=terjual.get)
+        print(f"Total pendapatan : {rupiah(totalpendapatan)}")
+        print(f"Jumlah transaksi : {len(riwayat)}")
+        print(f"Kereta terlaris  : {terlaris} ({terjual[terlaris]} tiket)\n")
+        tabel = PrettyTable(["Kereta", "Tiket Terjual"])
+        for nama, jml in sorted(terjual.items(), key=lambda x: x[1], reverse=True):
+            tabel.add_row([nama, jml])
+        print(tabel)
+        return {"pendapatan": totalpendapatan, "transaksi": len(riwayat), "terlaris": terlaris}
+    except (KeyError, TypeError, ValueError):
+        print("Data riwayat ada yang rusak/gak lengkap.....")
+    return None
+
+# ================== MENU ==================
+
+def menuadmin(user, jadwal, users, riwayat):
     while True:
         try:
             cleanterminal()
             print("=== MENU ADMIN ===")
-            print("1. Lihat Jadwal\n2. Tambah Jadwal\n3. Ubah Jadwal\n4. Hapus Jadwal\n0. Logout")
-            pilih = input("Pilih: ")
+            print("1. Lihat Jadwal\n2. Tambah Jadwal\n3. Ubah Jadwal\n4. Hapus Jadwal")
+            print("5. Lihat User\n6. Tambah User\n7. Ubah User\n8. Hapus User")
+            print("9. Riwayat Semua Transaksi\n10. Laporan Ringkas\n0. Logout")
+            pilih = inputaman("Pilih: ")
             cleanterminal()
             if pilih == "1":
                 tampilanJadwal(jadwal)
@@ -322,6 +613,18 @@ def menuadmin(user, jadwal):
                 ubahjadwal(jadwal)
             elif pilih == "4":
                 hapusjadwal(jadwal)
+            elif pilih == "5":
+                tampilanUser(users)
+            elif pilih == "6":
+                tambahuser(users)
+            elif pilih == "7":
+                ubahuser(users, riwayat)
+            elif pilih == "8":
+                hapususer(users, user)
+            elif pilih == "9":
+                tampilanRiwayat(riwayat, True)
+            elif pilih == "10":
+                laporan(riwayat)
             elif pilih == "0":
                 return
             else:
@@ -333,23 +636,30 @@ def menuadmin(user, jadwal):
         except FileNotFoundError:
             print("File data gak ketemu.....")
         except (KeyboardInterrupt, EOFError):
-            print("\nJangan pencet Ctrl, kembali ke menu utama...")
+            print("\nDDeteced ctrl...")
+            slow(1)
+            continue
         tekanenter()
 
-def menuuser(user, jadwal, users):
+def menuuser(user, jadwal, users, riwayat):
     while True:
         try:
             cleanterminal()
-            print('=== MENU USER ===')
-            print('1. Lihat Jadwal\n2. Saldo\n3. Pesan Tiket\n4. Saldo\n0. Logout')
-            pilih = input("Pilih: ")
+            print("=== MENU USER ===")
+            print(f"Saldo: {rupiah(user['saldo'])}")
+            print("1. Lihat Jadwal\n2. Top Up Saldo\n3. Pesan Tiket\n4. Riwayat Transaksi Saya\n5. Ubah Password\n0. Logout")
+            pilih = inputaman("Pilih: ")
             cleanterminal()
             if pilih == "1":
                 tampilanJadwal(jadwal)
             elif pilih == "2":
                 topsaldo(user, users)
             elif pilih == "3":
-                addjadwal(user, jdawal, users)
+                pesantiket(user, jadwal, users, riwayat)
+            elif pilih == "4":
+                riwayatsaya(user, riwayat)
+            elif pilih == "5":
+                ubahpassword(user, users)
             elif pilih == "0":
                 return
             else:
@@ -361,12 +671,15 @@ def menuuser(user, jadwal, users):
         except FileNotFoundError:
             print("File data gak ketemu.....")
         except (KeyboardInterrupt, EOFError):
-            print("\nJangan pencet Ctrl, kembali ke menu utama...")
+            print("\nDeteced ctrl....")
+            slow(1)
+            continue
         tekanenter()
 
 def main():
     users = loaddata(FileUser, Akundefault)
     jadwal = loaddata(FileJadwall, JadwalTiket)
+    riwayat = loaddata(FileRiwayat, [])
     while True:
         try:
             cleanterminal()
@@ -374,17 +687,16 @@ def main():
             print("   SISTEM PEMESANAN TIKET KERETA API")
             print("=====================================")
             print("1. Login\n2. Registrasi\n3. Keluar")
-            pilih = input("Pilih menu (1-3): ")
+            pilih = inputaman("Pilih menu (1-3): ")
             cleanterminal()
             if pilih == "1":
                 user = login(users)
                 if user:
                     slow()
                     if user["role"] == "admin":
-                        menuadmin(user, jadwal)
+                        menuadmin(user, jadwal, users, riwayat)
                     else:
-                        print("Menu user masih dikerjakan.....")
-                        slow()
+                        menuuser(user, jadwal, users, riwayat)
                 else:
                     slow()
             elif pilih == "2":
@@ -402,8 +714,8 @@ def main():
             print("File data gak ketemu.....")
             slow()
         except (KeyboardInterrupt, EOFError):
-            print("\nJangan pencet Ctrl, kembali ke menu utama...")
-            slow()
+            print("\nDeteced ctrl....")
+            slow(1)
 
 try:
     main()
