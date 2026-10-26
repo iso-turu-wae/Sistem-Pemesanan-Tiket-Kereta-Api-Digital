@@ -12,7 +12,6 @@ FileRiwayat = "riwayat.json"
 
 
 KelasTiket = ("Ekonomi", "Bisnis", "Eksekutif")
-RoleUser = ("user", "admin")
 Akundefault = [{"username": "admin", "password": "admin123", "role": "admin", "saldo": 0}]
 JadwalTiket = [
     {"Tiket": "T01", "nama": "Majapahit", "Dari": "Malang", "Tujuan": "Pasar Senen PP", "Jam": "09:45", "kelas": "Bisnis", "harga": 450000, "stok": 25},
@@ -381,91 +380,6 @@ def hapusjadwal(jadwalss):
         print("File jadwal gak ketemu, penghapusan gagal disimpan.....")
     return jadwalss
 
-# ================== CRUD USER (ADMIN) ==================
-
-def tambahuser(users):
-    print("=== TAMBAH USER ===")
-    try:
-        username = cekusername(users, inputaman("Username (min 5 karakter): "))
-        password = cekpassword(passaman("Password (min. 6 karakter): "))
-        for i, r in enumerate(RoleUser, 1):
-            print(f"{i}. {r}")
-        pilih = detekangka("Pilih role: ", 1)
-        if pilih > len(RoleUser):
-            raise ValueError("Pilihan role tidak valid....")
-        saldo = detekangka("Saldo awal: ", 0)
-        users.append({"username": username, "password": password, "role": RoleUser[pilih - 1], "saldo": saldo})
-        savedata(FileUser, users)
-        print("User berhasil ditambahkan.....")
-    except ValueError as e:
-        print(f"Gagal tambah user: {e}")
-    except FileNotFoundError:
-        print("File user gak ketemu, user gagal ditambahkan.....")
-    return users
-
-def ubahuser(users, riwayat):
-    print("=== UBAH USER ===")
-    try:
-        tampilanUser(users)
-        o = deteksiuser(users, "username", detekinput("Username yang mau diubah: "))
-        if not o:
-            raise ValueError("User tidak ditemukan😞")
-        print("Kosongkan input jika tidak ingin mengubah.....")
-        lama = o["username"]
-        usernamebaru = inputaman(f"Username [{lama}]: ")
-        if usernamebaru and usernamebaru != lama:
-            cekusername(users, usernamebaru)
-        else:
-            usernamebaru = ""
-        passwordbaru = passaman("Password baru [kosongkan jika tidak diubah]: ")
-        if passwordbaru:
-            cekpassword(passwordbaru)
-        saldobaru = inputaman(f"Saldo [{rupiah(o['saldo'])}]: ")
-        if usernamebaru:
-            o["username"] = usernamebaru
-            for t in riwayat:
-                if t["username"] == lama:
-                    t["username"] = usernamebaru
-            savedata(FileRiwayat, riwayat)
-        if passwordbaru:
-            o["password"] = passwordbaru
-        if saldobaru:
-            try:
-                nilai = int(saldobaru)
-                if nilai < 0:
-                    raise ValueError
-                o["saldo"] = nilai
-            except ValueError:
-                print("Saldo tidak valid, tidak diubah.....")
-        savedata(FileUser, users)
-        print("User berhasil diubah.....")
-    except ValueError as e:
-        print(e)
-    except FileNotFoundError:
-        print("File user gak ketemu, perubahan gagal disimpan.....")
-    return users
-
-def hapususer(users, admin):
-    print("=== HAPUS USER ===")
-    try:
-        tampilanUser(users)
-        o = deteksiuser(users, "username", detekinput("Username yang mau dihapus: "))
-        if not o:
-            raise ValueError("User tidak ditemukan😞")
-        if o["username"] == admin["username"]:
-            raise ValueError("Gak bisa hapus akun yang lagi dipakai login....")
-        if konfirmasi(f"Yakin mau hapus user {o['username']}?"):
-            users.remove(o)
-            savedata(FileUser, users)
-            print("User berhasil dihapus.....")
-        else:
-            print("Dibatalkan....")
-    except ValueError as e:
-        print(e)
-    except FileNotFoundError:
-        print("File user gak ketemu, penghapusan gagal disimpan.....")
-    return users
-
 # ================== FITUR USER ==================
 
 def topsaldo(user, users):
@@ -601,8 +515,8 @@ def menuadmin(user, jadwal, users, riwayat):
             cleanterminal()
             print("=== MENU ADMIN ===")
             print("1. Lihat Jadwal\n2. Tambah Jadwal\n3. Ubah Jadwal\n4. Hapus Jadwal")
-            print("5. Lihat User\n6. Tambah User\n7. Ubah User\n8. Hapus User")
-            print("9. Riwayat Semua Transaksi\n10. Laporan Ringkas\n0. Logout")
+            print("5. Lihat User")
+            print("6. Riwayat Semua Transaksi\n7. Laporan Ringkas\n0. Logout")
             pilih = inputaman("Pilih: ")
             cleanterminal()
             if pilih == "1":
@@ -616,14 +530,8 @@ def menuadmin(user, jadwal, users, riwayat):
             elif pilih == "5":
                 tampilanUser(users)
             elif pilih == "6":
-                tambahuser(users)
-            elif pilih == "7":
-                ubahuser(users, riwayat)
-            elif pilih == "8":
-                hapususer(users, user)
-            elif pilih == "9":
                 tampilanRiwayat(riwayat, True)
-            elif pilih == "10":
+            elif pilih == "7":
                 laporan(riwayat)
             elif pilih == "0":
                 return
