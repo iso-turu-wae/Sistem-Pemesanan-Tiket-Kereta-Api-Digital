@@ -1,0 +1,72 @@
+[
+    {
+        "Tiket": "T01",
+        "nama": "Majapahit",
+        "Dari": "Malang",
+        "Tujuan": "Pasar Senen PP",
+        "Jam": "09:45",
+        "kelas": "Bisnis",
+        "harga": 450000,
+        "stok": 25
+    },
+    {
+        "Tiket": "T02",
+        "nama": "Lodaya",
+        "Dari": "Solo Balapan",
+        "Tujuan": "Bandung PP",
+        "Jam": "12:15",
+        "kelas": "Eksekutif",
+        "harga": 610000,
+        "stok": 35
+    },
+    {
+        "Tiket": "T03",
+        "nama": "Malabar",
+        "Dari": "Malang",
+        "Tujuan": "Bandung PP",
+        "Jam": "08:30",
+        "kelas": "Ekonomi",
+        "harga": 200000,
+        "stok": 10
+    },
+    {
+        "Tiket": "T04",
+        "nama": "Taksaka",
+        "Dari": "Yogyakarta",
+        "Tujuan": "Gambir PP",
+        "Jam": "15:00",
+        "kelas": "Eksekutif",
+        "harga": 710000,
+        "stok": 50
+    },
+    {
+        "Tiket": "T05",
+        "nama": "Ambarawa Ekspres",
+        "Dari": "Semarang Poncol",
+        "Tujuan": "Surabaya Pasarturi PP",
+        "Jam": "13:20",
+        "kelas": "Bisnis",
+        "harga": 350000,
+        "stok": 25
+    },
+    {
+        "Tiket": "T06",
+        "nama": "Ciremai",
+        "Dari": "Bandung",
+        "Tujuan": "Semarang Tawang PP",
+        "Jam": "07:00",
+        "kelas": "Ekonomi",
+        "harga": 150000,
+        "stok": 27
+    },
+    {
+        "Tiket": "T08",
+        "nama": "Bandung",
+        "Dari": "Jakarta",
+        "Tujuan": "Mamat",
+        "Jam": "08:45",
+        "kelas": "Ekonomi",
+        "harga": 10000000,
+        "stok": 0
+    }
+]

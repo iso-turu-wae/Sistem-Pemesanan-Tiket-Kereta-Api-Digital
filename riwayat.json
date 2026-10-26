@@ -1,0 +1,30 @@
+[
+    {
+        "kode": "TRX72103",
+        "waktu": "2026-10-25 10:24:33",
+        "username": "mamat1",
+        "Tiket": "T08",
+        "kereta": "Bandung",
+        "dari": "Jakarta",
+        "tujuan": "Mamat",
+        "jam": "08:45",
+        "kelas": "Ekonomi",
+        "harga": 10000000,
+        "jumlah": 1,
+        "total": 10000000
+    },
+    {
+        "kode": "TRX74209",
+        "waktu": "2026-10-25 10:57:04",
+        "username": "mamat1",
+        "Tiket": "T06",
+        "kereta": "Ciremai",
+        "dari": "Bandung",
+        "tujuan": "Semarang Tawang PP",
+        "jam": "07:00",
+        "kelas": "Ekonomi",
+        "harga": 150000,
+        "jumlah": 5,
+        "total": 750000
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "username": "admin",
+        "password": "admin123",
+        "role": "admin",
+        "saldo": 0
+    },
+    {
+        "username": "alyaaa",
+        "password": "hatake",
+        "role": "user",
+        "saldo": 0
+    },
+    {
+        "username": "mamat shop",
+        "password": "mamat12",
+        "role": "user",
+        "saldo": 0
+    },
+    {
+        "username": "adminn",
+        "password": "admin123",
+        "role": "user",
+        "saldo": 0
+    },
+    {
+        "username": "mamat1",
+        "password": "mamat1",
+        "role": "user",
+        "saldo": 250000
+    }
+]
