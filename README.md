@@ -2,6 +2,20 @@
 
 Program berbasis terminal yang dibuat menggunakan Python untuk mengelola dan memesan tiket kereta api. Program memiliki dua role, yaitu **Admin** yang mengelola jadwal kereta dan **User** yang mencari jadwal, mengisi saldo, memesan tiket, serta mencetak invoice. Seluruh data disimpan dalam file **JSON**, sehingga tetap tersimpan setelah program ditutup.
 
+# Flowchart Pemesanan Tiket Kereta Api Digital
+
+## Menu Utama
+
+<img width="2442" height="1217" alt="DDP PA (1)-1  Menu Utama, Login, Registrasi, Menu Admin (1)" src="https://github.com/user-attachments/assets/2bbf44d4-ff6d-4210-9acf-f4d17acb654a" />
+
+## CRUD Menu Admin
+
+<img width="2272" height="1112" alt="DDP PA (1)-Menu Admin" src="https://github.com/user-attachments/assets/d4367b91-d2c0-47e6-80c3-0adad268ef8b" />
+
+## Menu User
+
+<img width="1722" height="1272" alt="DDP PA (1)-menu user" src="https://github.com/user-attachments/assets/bb0fec94-ed3a-4f56-9305-ab5e909d3213" />
+
 ## Anggota & Peran
 
 | No | Nama | NIM | Peran |
