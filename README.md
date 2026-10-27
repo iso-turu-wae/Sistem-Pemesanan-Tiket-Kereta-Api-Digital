@@ -6,7 +6,8 @@ Program berbasis terminal yang dibuat menggunakan Python untuk mengelola dan mem
 
 ## Menu Utama
 
-<img width="2442" height="1217" alt="DDP PA (1)-1  Menu Utama, Login, Registrasi, Menu Admin (1)" src="https://github.com/user-attachments/assets/2bbf44d4-ff6d-4210-9acf-f4d17acb654a" />
+<img width="2572" height="1612" alt="pa ddp-1  Menu Utama, Login, Registrasi, Menu Admin drawio" src="https://github.com/user-attachments/assets/7ee9d9aa-34c3-4f80-8777-095719ac3999" />
+
 
 ## CRUD Menu Admin
 
@@ -14,7 +15,8 @@ Program berbasis terminal yang dibuat menggunakan Python untuk mengelola dan mem
 
 ## Menu User
 
-<img width="1722" height="1272" alt="DDP PA (1)-menu user" src="https://github.com/user-attachments/assets/bb0fec94-ed3a-4f56-9305-ab5e909d3213" />
+<img width="1682" height="1212" alt="pa ddp-menu user drawio" src="https://github.com/user-attachments/assets/c3c953d0-a460-4cba-a08c-feb547ef3308" />
+
 
 ## Anggota & Peran
 
