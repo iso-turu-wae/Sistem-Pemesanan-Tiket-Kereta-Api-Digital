@@ -107,45 +107,51 @@ Pemesanan tiket kereta api secara manual membuat data jadwal, stok kursi, dan tr
       print("File data gak ketemu, transaksi gagal disimpan.....")
   ```
 
+# Menjalankan Sistem Pemesanan Ticket kereta Api Digital
 
-Menu utama:
+## Login Sebagai Admin
 
-```text
-=====================================
-   SISTEM PEMESANAN TIKET KERETA API
-=====================================
-1. Login
-2. Registrasi
-3. Keluar
-Pilih menu (1-3):
-```
+<img width="270" height="110" alt="Screenshot 2026-10-27 113859" src="https://github.com/user-attachments/assets/34a2d835-6528-4c8a-8bb1-cfd0f328e516" />
+<br>
+<img width="257" height="122" alt="Screenshot 2026-10-27 113913" src="https://github.com/user-attachments/assets/0f6c0b06-4f81-4445-a5d3-88e2d9e9db7c" />
+<br>
+<img width="249" height="152" alt="Screenshot 2026-10-27 113927" src="https://github.com/user-attachments/assets/a2423eb8-77e1-458a-b362-15a7202c8484" />
 
-Menu admin:
+## 1.Lihat Jadwal
 
-```text
-=== MENU ADMIN ===
-1. Lihat Jadwal
-2. Tambah Jadwal
-3. Ubah Jadwal
-4. Hapus Jadwal
-5. Riwayat Semua Transaksi
-6. Laporan Ringkas
-0. Logout
-Pilih:
-```
+<img width="204" height="146" alt="Screenshot 2026-10-27 114553" src="https://github.com/user-attachments/assets/e9f4d332-d8e6-430d-b867-de9733ff3cec" />
+<br>
+<img width="625" height="170" alt="Screenshot 2026-10-27 114602" src="https://github.com/user-attachments/assets/4ae276cf-cc1e-4d55-8005-e7c40f20f62f" />
 
-Menu user:
+## 2.Tambah Jadwal
 
-```text
-=== MENU USER === | Saldo: Rp0
-1. Lihat Jadwal
-2. Cari Tiket
-3. Top Up Saldo
-4. Pesan Tiket
-5. Riwayat Saya
-0. Logout
-Pilih:
-```
+<img width="308" height="161" alt="Screenshot 2026-10-27 114929" src="https://github.com/user-attachments/assets/a83beafb-baac-4307-bf4f-9d160ce4eede" />
+<br>
+<img width="434" height="205" alt="Screenshot 2026-10-27 114920" src="https://github.com/user-attachments/assets/7ed367d6-25ec-41a1-b027-67ad4eb46b09" />
+
+## 3. ubah Jadwal
+
+<img width="189" height="149" alt="Screenshot 2026-10-27 115120" src="https://github.com/user-attachments/assets/e7be15b9-ef68-4615-a3bd-80010191c2ba" />
+<br>
+<img width="619" height="396" alt="Screenshot 2026-10-27 115307" src="https://github.com/user-attachments/assets/6cbcd163-997b-4d10-8e47-56be13db95c6" />
+
+## 4. Hapus Jadwal
+
+<img width="245" height="144" alt="Screenshot 2026-10-27 115516" src="https://github.com/user-attachments/assets/3657acb0-7317-45d4-9cc7-6752ab23ef6a" />
+<br>
+<img width="580" height="247" alt="Screenshot 2026-10-27 115502" src="https://github.com/user-attachments/assets/ab1936fe-31fb-4f9a-82ed-ad3532cbc1ab" />
+
+## 5. Lihat User
+
+<img width="234" height="144" alt="Screenshot 2026-10-27 115649" src="https://github.com/user-attachments/assets/10a22779-d781-4cc2-a6f0-51c86aa37080" />
+<br>
+<img width="244" height="116" alt="Screenshot 2026-10-27 115744" src="https://github.com/user-attachments/assets/fb6bde66-4d5f-4ccd-b615-3fc29852801a" />
+
+
+
+
+
+
 
 ## Penerapan Materi
 
