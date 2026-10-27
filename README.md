@@ -25,6 +25,7 @@ Program berbasis terminal yang dibuat menggunakan Python untuk mengelola dan mem
 | 1 | Ignatius Imanuel Saroha Simalango | 2609116029 | Flowchart & Pemrograman |
 | 2 | Wisnu Aji| 2609116022 | Flowchart , Bug hunt|
 | 3 | Muhammad Royyan| 2609116005 | Buat laporan, Flowchart, Pemrograman|
+| 4 | Aura Rizki Tariti | 2609116032 |
 
 ## Deskripsi & Tujuan
 
