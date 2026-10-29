@@ -11,11 +11,13 @@ Program berbasis terminal yang dibuat menggunakan Python untuk mengelola dan mem
 
 ## CRUD Menu Admin
 
-<img width="2272" height="1112" alt="DDP PA (1)-Menu Admin" src="https://github.com/user-attachments/assets/d4367b91-d2c0-47e6-80c3-0adad268ef8b" />
+<img width="4135" height="3507" alt="pa ddp-Menu Admin" src="https://github.com/user-attachments/assets/1a267e9b-cfc1-46e1-804c-c8c4e441ed48" />
+
 
 ## Menu User
 
-<img width="1682" height="1212" alt="pa ddp-menu user drawio" src="https://github.com/user-attachments/assets/c3c953d0-a460-4cba-a08c-feb547ef3308" />
+<img width="2400" height="1600" alt="pa ddp-menu user" src="https://github.com/user-attachments/assets/fc8d2605-336b-4ab7-b9ed-67e811d5635e" />
+
 
 
 ## Anggota & Peran
