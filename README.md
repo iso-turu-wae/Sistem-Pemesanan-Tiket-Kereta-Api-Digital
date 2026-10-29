@@ -173,41 +173,53 @@ Pemesanan tiket kereta api secara manual membuat data jadwal, stok kursi, dan tr
 | --- | --- |
 | `cleanterminal()` | Membersihkan layar terminal sesuai sistem operasi |
 | `slow()` | Memberi jeda sebelum layar berpindah |
+| `inputaman()` | `input()` yang aman dari `Ctrl+C` dan `Ctrl+D` |
+| `passaman()` | Input password tersembunyi yang aman dari `Ctrl+C` dan `Ctrl+D` |
+| `tekanenter()` | Menahan layar sampai user menekan Enter |
 | `savedata()` | Menyimpan data ke file JSON |
 | `loaddata()` | Membaca file JSON, membuat file baru bila belum ada atau rusak |
 | `detekinput()` | Meminta input teks yang tidak boleh kosong |
-| `detekangka()` | Meminta input angka bulat dengan batas minimal dan maksimal |
+| `detekangka()` | Meminta input angka bulat dengan batas minimal |
+| `detekjam()` | Meminta input jam sampai formatnya benar |
+| `detekkode()` | Meminta kode tiket yang diawali huruf `T` tanpa spasi |
 | `konfirmasi()` | Meminta jawaban `y/n` |
 | `rupiah()` | Mengubah angka ke format rupiah |
 | `deteksiuser()` | Mencari satu data berdasarkan key dan nilai |
 | `cekjam()` | Memvalidasi dan merapikan format jam `HH:MM` |
+| `cekusername()` | Memvalidasi username (tidak kosong, minimal 5 karakter, belum dipakai) |
+| `cekpassword()` | Memvalidasi password (tidak kosong, minimal 6 karakter) |
+| `buatkode()` | Membuat kode transaksi unik (`TRXxxxxx`) |
 | `tampilanJadwal()` | Menampilkan jadwal dalam bentuk tabel |
-| `transaksi()` | Menampilkan daftar transaksi dalam bentuk tabel |
-| `invoice()` | Mencetak invoice transaksi |
+| `tampilanUser()` | Menampilkan daftar user dalam bentuk tabel |
+| `tampilanRiwayat()` | Menampilkan daftar transaksi dalam bentuk tabel |
+| `cetakinvoice()` | Mencetak invoice transaksi |
 | `registrasi()` | Membuat akun user baru |
 | `login()` | Memeriksa username dan password, maksimal 3 kali |
 | `addjadwal()` | Menambah jadwal baru |
 | `ubahjadwal()` | Mengubah data jadwal |
 | `hapusjadwal()` | Menghapus jadwal setelah konfirmasi |
-| `laporan()` | Menampilkan laporan ringkas untuk admin |
-| `caritiket()` | Mencari tiket berdasarkan kode, nama kereta, atau stasiun |
-| `topup()` | Menambah saldo user |
-| `kodetrx()` | Membuat kode transaksi unik |
+| `tambahuser()` | Menambah user baru oleh admin |
+| `ubahuser()` | Mengubah data user oleh admin |
+| `hapususer()` | Menghapus user setelah konfirmasi |
+| `topsaldo()` | Menambah saldo user |
 | `pesantiket()` | Memproses pemesanan tiket dan pembayaran dengan saldo |
-| `riwayat()` | Menampilkan riwayat transaksi milik user |
+| `riwayatsaya()` | Menampilkan riwayat transaksi milik user |
+| `ubahpassword()` | Mengubah password user |
+| `laporan()` | Menampilkan laporan ringkas untuk admin |
 | `menuadmin()` | Mengatur perulangan menu admin |
 | `menuuser()` | Mengatur perulangan menu user |
 | `main()` | Memuat data, mengatur menu utama, dan menjalankan login atau registrasi |
 
+
 ## Ketentuan Data
 
 - Username minimal 5 karakter dan tidak boleh sama dengan username lain. Password minimal 6 karakter.
-- Kode tiket bersifat unik dan otomatis diubah menjadi huruf besar.
+- Kode tiket bersifat unik, otomatis diubah menjadi huruf besar, diawali huruf `T`, dan tanpa spasi.
 - Jam berformat `HH:MM`, harga lebih dari 0, dan stok tidak boleh negatif.
-- Top up minimal `Rp10.000` dan maksimal `Rp10.000.000` untuk nominal lain.
+- Top up maksimal `Rp100.000.000` per sekali top up.
 - Saldo dan stok tidak boleh negatif. Pemesanan ditolak jika saldo atau stok tidak cukup.
-- Pada `transaksi.json`, key `Tiket` berisi kode transaksi (`TKT-xxxxxx`), sedangkan pada `jadwal.json` key `Tiket` berisi kode tiket kereta.
-- Jika file JSON dihapus, file dibuat ulang dari data awal saat program dijalankan.
+- Pada `riwayat.json`, key `kode` berisi kode transaksi (`TRXxxxxx`), sedangkan key `Tiket` berisi kode tiket kereta yang dipesan.
+- Jika file JSON dihapus atau rusak, file dibuat ulang dari data awal saat program dijalankan. Akun awal adalah `admin` dengan password `admin123`.
 - Contoh isi `jadwal.json`:
 
   ```json
