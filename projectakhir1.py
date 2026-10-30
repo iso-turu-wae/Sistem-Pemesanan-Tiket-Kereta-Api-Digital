@@ -42,10 +42,10 @@ def inputaman(wm):
             print("\nDeteced ctrl....")
             slow(1)
 
-def passaman(wm, mask="*"):
+def passaman(wm):
     while True:
         try:
-            return pwinput.pwinput(wm, mask=mask)
+            return pwinput.pwinput(wm)
         except (KeyboardInterrupt, EOFError):
             print("\nDeteced ctrl....")
             slow(1)
@@ -438,7 +438,7 @@ def ubahuser(users, riwayat):
             except ValueError:
                 print("Saldo tidak valid, tidak diubah.....")
         savedata(FileUser, users)
-        print("User berhasil diubah.....")
+        print("saldo user berhasil diubah.....")
     except ValueError as e:
         print(e)
     except FileNotFoundError:
