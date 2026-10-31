@@ -179,6 +179,12 @@ Pemesanan tiket kereta api secara manual membuat data jadwal, stok kursi, dan tr
 <br>
 <img width="470" height="164" alt="image" src="https://github.com/user-attachments/assets/783ebf84-41f5-4bc7-a844-9ea1fb42757b" />
 
+## 11. Logout
+
+<img width="365" height="151" alt="Screenshot 2026-10-31 212908" src="https://github.com/user-attachments/assets/2e9f672d-25ec-46a5-b79a-b89bdfc5de83" />
+>
+
+
 
 
 
