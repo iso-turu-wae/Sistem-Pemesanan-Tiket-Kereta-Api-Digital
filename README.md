@@ -117,37 +117,67 @@ Pemesanan tiket kereta api secara manual membuat data jadwal, stok kursi, dan tr
 <br>
 <img width="257" height="122" alt="Screenshot 2026-10-27 113913" src="https://github.com/user-attachments/assets/0f6c0b06-4f81-4445-a5d3-88e2d9e9db7c" />
 <br>
-<img width="249" height="152" alt="Screenshot 2026-10-27 113927" src="https://github.com/user-attachments/assets/a2423eb8-77e1-458a-b362-15a7202c8484" />
+<img width="295" height="160" alt="Screenshot 2026-10-31 210118" src="https://github.com/user-attachments/assets/370a4f8b-e55f-4f9e-a6ef-db6a9e904221" />
 
 ## 1.Lihat Jadwal
 
-<img width="204" height="146" alt="Screenshot 2026-10-27 114553" src="https://github.com/user-attachments/assets/e9f4d332-d8e6-430d-b867-de9733ff3cec" />
+<img width="205" height="152" alt="Screenshot 2026-10-31 210256" src="https://github.com/user-attachments/assets/0d2bc6f3-7263-42c9-b6b2-fbcbeda31f2e" />
 <br>
 <img width="625" height="170" alt="Screenshot 2026-10-27 114602" src="https://github.com/user-attachments/assets/4ae276cf-cc1e-4d55-8005-e7c40f20f62f" />
 
 ## 2.Tambah Jadwal
 
-<img width="308" height="161" alt="Screenshot 2026-10-27 114929" src="https://github.com/user-attachments/assets/a83beafb-baac-4307-bf4f-9d160ce4eede" />
+<img width="366" height="154" alt="Screenshot 2026-10-31 210437" src="https://github.com/user-attachments/assets/1c8af3ac-9a2d-4c7b-96bd-27dc2dbbf003" />
 <br>
 <img width="434" height="205" alt="Screenshot 2026-10-27 114920" src="https://github.com/user-attachments/assets/7ed367d6-25ec-41a1-b027-67ad4eb46b09" />
 
 ## 3. ubah Jadwal
 
-<img width="189" height="149" alt="Screenshot 2026-10-27 115120" src="https://github.com/user-attachments/assets/e7be15b9-ef68-4615-a3bd-80010191c2ba" />
+<img width="291" height="151" alt="Screenshot 2026-10-31 210444" src="https://github.com/user-attachments/assets/9efcc726-febd-4e63-a77b-b5e683d6dfd0" />
 <br>
 <img width="619" height="396" alt="Screenshot 2026-10-27 115307" src="https://github.com/user-attachments/assets/6cbcd163-997b-4d10-8e47-56be13db95c6" />
 
 ## 4. Hapus Jadwal
 
-<img width="245" height="144" alt="Screenshot 2026-10-27 115516" src="https://github.com/user-attachments/assets/3657acb0-7317-45d4-9cc7-6752ab23ef6a" />
+<img width="354" height="150" alt="Screenshot 2026-10-31 210456" src="https://github.com/user-attachments/assets/545958cd-5c39-4725-a961-a039142c56ff" />
 <br>
 <img width="580" height="247" alt="Screenshot 2026-10-27 115502" src="https://github.com/user-attachments/assets/ab1936fe-31fb-4f9a-82ed-ad3532cbc1ab" />
 
 ## 5. Lihat User
 
-<img width="234" height="144" alt="Screenshot 2026-10-27 115649" src="https://github.com/user-attachments/assets/10a22779-d781-4cc2-a6f0-51c86aa37080" />
+<img width="422" height="158" alt="Screenshot 2026-10-31 210504" src="https://github.com/user-attachments/assets/73a09f9e-353f-4bb2-aebc-ba9ccd11f929" />
 <br>
 <img width="244" height="116" alt="Screenshot 2026-10-27 115744" src="https://github.com/user-attachments/assets/fb6bde66-4d5f-4ccd-b615-3fc29852801a" />
+
+## 6. Tambah User
+
+<img width="419" height="152" alt="Screenshot 2026-10-31 210810" src="https://github.com/user-attachments/assets/8424ea5d-2b27-43eb-9c89-63bd1ae3761c" />
+<br>
+<img width="371" height="130" alt="Screenshot 2026-10-31 210830" src="https://github.com/user-attachments/assets/4a73ad8d-a925-44b0-8611-514672a83dc2" />
+
+## 7. Ubah User
+
+<img width="374" height="155" alt="Screenshot 2026-10-31 210938" src="https://github.com/user-attachments/assets/8b9a2ab5-4ba2-48d3-a2ae-169ab8b1dcad" />
+<br>
+<img width="409" height="185" alt="Screenshot 2026-10-31 211046" src="https://github.com/user-attachments/assets/5246cd66-5a2c-499d-8051-89a01c7cc6f4" />
+
+## 8. Hapus User
+
+<img width="338" height="146" alt="Screenshot 2026-10-31 211349" src="https://github.com/user-attachments/assets/040acbe3-a31c-428e-a8a4-5a870e0d2979" />
+<br>
+<img width="316" height="150" alt="Screenshot 2026-10-31 211403" src="https://github.com/user-attachments/assets/210ad091-fd5d-483f-a8ef-c80f7389c3e0" />
+
+## 9. Riwayat Semua Transaksi
+
+<img width="353" height="151" alt="image" src="https://github.com/user-attachments/assets/a4fe71a5-36b4-4ee8-874c-da1b00e8536d" />
+<br>
+<img width="643" height="124" alt="image" src="https://github.com/user-attachments/assets/20b4386e-de84-4760-8037-1d8c2eec0cb9" />
+
+## 10. Laporan Ringkas 
+
+<img width="345" height="162" alt="Screenshot 2026-10-31 212221" src="https://github.com/user-attachments/assets/66b5b4c0-0d3f-42c1-89a1-c90383d8e04f" />
+<br>
+<img width="470" height="164" alt="image" src="https://github.com/user-attachments/assets/783ebf84-41f5-4bc7-a844-9ea1fb42757b" />
 
 
 
