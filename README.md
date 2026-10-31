@@ -8,11 +8,9 @@ Program berbasis terminal yang dibuat menggunakan Python untuk mengelola dan mem
 
 <img width="2572" height="1612" alt="pa ddp-1  Menu Utama, Login, Registrasi, Menu Admin drawio" src="https://github.com/user-attachments/assets/7ee9d9aa-34c3-4f80-8777-095719ac3999" />
 
-
 ## CRUD Menu Admin
 
-<img width="4135" height="3507" alt="pa ddp-Menu Admin" src="https://github.com/user-attachments/assets/1a267e9b-cfc1-46e1-804c-c8c4e441ed48" />
-
+<img width="3243" height="1422" alt="pa ddp-Menu Admin (2)" src="https://github.com/user-attachments/assets/edf11979-20c8-4e73-83cb-a04b342c7628" />
 
 ## Menu User
 
