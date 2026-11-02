@@ -393,8 +393,11 @@ def tambahuser(users):
         pilih = detekangka("Pilih role: ", 1)
         if pilih > len(RoleUser):
             raise ValueError("Pilihan role tidak valid....")
-        saldo = detekangka("Saldo awal: ", 0)
-        users.append({"username": username, "password": password, "role": RoleUser[pilih - 1], "saldo": saldo})
+        role = RoleUser[pilih - 1]
+        saldo = 0
+        if role == "user":
+            saldo = detekangka("Saldo awal: ", 0)
+        users.append({"username": username, "password": password, "role": role, "saldo": saldo})
         savedata(FileUser, users)
         print("User berhasil ditambahkan.....")
     except ValueError as e:
