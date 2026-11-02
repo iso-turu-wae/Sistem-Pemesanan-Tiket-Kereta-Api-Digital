@@ -125,11 +125,15 @@ Pemesanan tiket kereta api secara manual membuat data jadwal, stok kursi, dan tr
 <br>
 <img width="295" height="160" alt="Screenshot 2026-10-31 210118" src="https://github.com/user-attachments/assets/370a4f8b-e55f-4f9e-a6ef-db6a9e904221" />
 
+Tampilan ini menampilkan antarmuka berbasis terminal untuk alur Login Sebagai Admin pada Sistem Pemesanan Tiket Kereta Api. Alurnya dimulai dari menu awal (opsi 1: Login), proses verifikasi hak akses berupa autentikasi akun admin, hingga pengguna berhasil masuk dan diarahkan ke dasbor utama MENU ADMIN yang siap menerima input pilihan fitur.
+
 ## 1.Lihat Jadwal
 
 <img width="205" height="152" alt="Screenshot 2026-10-31 210256" src="https://github.com/user-attachments/assets/0d2bc6f3-7263-42c9-b6b2-fbcbeda31f2e" />
 <br>
 <img width="625" height="170" alt="Screenshot 2026-10-27 114602" src="https://github.com/user-attachments/assets/4ae276cf-cc1e-4d55-8005-e7c40f20f62f" />
+
+Tampilan ini menunjukkan antarmuka berbasis terminal untuk fitur 1. Lihat Jadwal pada Menu Admin. Setelah admin memilih opsi "1", sistem menampilkan daftar tabel jadwal keberangkatan kereta api secara terstruktur—mencakup kode tiket, nama kereta, stasiun asal, tujuan, jam keberangkatan, kelas, harga, hingga sisa stok tiket—dan meminta penekanan tombol Enter untuk melanjutkan kembali ke menu.
 
 ## 2.Tambah Jadwal
 
@@ -137,11 +141,15 @@ Pemesanan tiket kereta api secara manual membuat data jadwal, stok kursi, dan tr
 <br>
 <img width="434" height="205" alt="Screenshot 2026-10-27 114920" src="https://github.com/user-attachments/assets/7ed367d6-25ec-41a1-b027-67ad4eb46b09" />
 
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 2. Tambah Jadwal pada Menu Admin. Setelah memilih opsi ke-2, admin memasukkan detail jadwal baru secara interaktif mulai dari kode tiket (berawalan T), nama kereta, stasiun asal dan tujuan, jam keberangkatan, pilihan kelas (Ekonomi/Bisnis/Eksekutif), harga tiket, hingga stok kursi. Sistem kemudian memproses penyimpanan dan menampilkan pesan "Jadwal berhasil ditambahkan" sebelum meminta pengguna menekan Enter untuk melanjutkan.
+
 ## 3. ubah Jadwal
 
 <img width="291" height="151" alt="Screenshot 2026-10-31 210444" src="https://github.com/user-attachments/assets/9efcc726-febd-4e63-a77b-b5e683d6dfd0" />
 <br>
 <img width="619" height="396" alt="Screenshot 2026-10-27 115307" src="https://github.com/user-attachments/assets/6cbcd163-997b-4d10-8e47-56be13db95c6" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 3. Ubah Jadwal pada Menu Admin. Setelah memilih opsi ke-3, admin memasukkan kode tiket yang ingin diubah (contohnya t05), lalu dapat memperbarui informasi seperti nama kereta, stasiun asal, tujuan, jam keberangkatan, kelas, harga, dan stok kursi. Sistem kemudian memproses perubahan dan menampilkan pesan "Jadwal berhasil diubah" sebelum meminta pengguna menekan Enter untuk melanjutkan.
 
 ## 4. Hapus Jadwal
 
