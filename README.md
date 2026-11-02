@@ -30,7 +30,7 @@ Flowchart  ini menggambarkan alur kerja Menu User yang menyediakan 6 pilihan uta
 
 | No | Nama | NIM | Peran |
 | --- | --- | --- | --- |
-| 1 | Ignatius Imanuel Saroha Simalango | 2609116029 | Flowchart & Pemrograman |
+| 1 | Ignatius Imanuel Saroha Simalango | 2609116029 | Laporan & Pemrograman |
 | 2 | Wisnu Aji| 2609116022 | Flowchart , Bug hunt|
 | 3 | Muhammad Royyan| 2609116005 | Buat laporan, Flowchart, Pemrograman|
 | 4 | Aura Rizki Tariti | 2609116032 |
