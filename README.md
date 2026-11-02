@@ -213,6 +213,68 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 10. Laporan Ringkas pada
 
 Tampilan ini menunjukkan antarmuka terminal untuk opsi 11. Logout (atau pilihan angka 0 pada menu) pada Menu Admin. Setelah admin memilih opsi keluar tersebut, sistem akan memproses pengakhiran sesi aktif dan mengembalikan pengguna ke halaman utama login sistem.
 
+## Login Sebagai User
+
+<img width="198" height="95" alt="image" src="https://github.com/user-attachments/assets/ca52d8e7-8115-471c-b3f9-1bde3cc0a9d5" />
+<br>
+<img width="163" height="58" alt="Screenshot 2026-11-02 195757" src="https://github.com/user-attachments/assets/1bb74671-6c8d-4115-bb86-1e841eff1dbe" />
+<br>
+<img width="194" height="110" alt="image" src="https://github.com/user-attachments/assets/79464bb7-8c97-4cb3-bc8e-444b7d01eaaa" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk proses Login Sebagai User pada Sistem Pemesanan Tiket Kereta Api. Alur dimulai dari menu utama (pilihan 1: Login), dilanjutkan dengan memasukkan kredensial akun pengguna (Username dan Password), dan setelah berhasil masuk, sistem menampilkan dasbor MENU USER yang memuat informasi sisa saldo serta 6 pilihan menu layanan pengguna (Lihat Jadwal, Top up Saldo, Pesan Tiket, Riwayat Transaksi Saya, Ubah Password, hingga Logout).
+
+## 1. Lihat Jadwal
+
+<img width="165" height="113" alt="image" src="https://github.com/user-attachments/assets/e4d131bd-e662-4d14-bd02-252f95792dc7" />
+<br>
+<img width="520" height="191" alt="image" src="https://github.com/user-attachments/assets/d722ff0a-dd18-4628-8420-c8a7b2e419ed" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 1. Lihat Jadwal pada Menu User. Setelah pengguna memilih opsi nomor 1 dari menu utama, sistem menampilkan daftar tabel rincian jadwal kereta yang tersedia—termasuk informasi kode tiket, nama kereta, stasiun asal dan tujuan, jam, kelas, harga, hingga sisa stok—dan meminta pengguna menekan tombol Enter untuk melanjutkan.
+
+## 2. Top up Saldo
+
+<img width="173" height="119" alt="image" src="https://github.com/user-attachments/assets/52f4306b-0495-437e-9302-3843166d89ef" />
+<br>
+<img width="257" height="86" alt="image" src="https://github.com/user-attachments/assets/b8314a83-e418-4581-95ae-3eda66015ecf" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 2. Top Up Saldo pada Menu User. Setelah pengguna memilih opsi nomor 2, sistem menampilkan informasi saldo saat ini, meminta input nominal top up, lalu menampilkan pesan keberhasilan beserta pembaruan jumlah saldo terkini sebelum meminta pengguna menekan tombol Enter untuk melanjutkan.
+
+## 3. Pesan Ticket
+
+<img width="179" height="106" alt="Screenshot 2026-11-02 202203" src="https://github.com/user-attachments/assets/07218561-64a3-4289-952f-82ca7f805eeb" />
+<br>
+<img width="519" height="421" alt="Screenshot 2026-11-02 202308" src="https://github.com/user-attachments/assets/95d21f51-10a3-412e-8742-c2426a90f74b" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 3. Pesan Tiket pada Menu User. Setelah pengguna memilih opsi nomor 3, sistem menampilkan daftar jadwal kereta, meminta input kode tiket yang ingin dipesan, jumlah tiket, serta konfirmasi pembayaran menggunakan saldo akun (y/n). Setelah pembayaran berhasil, sistem menampilkan rincian Invoice Pembelian Tiket yang memuat kode transaksi, waktu, nama pemesan, rincian kereta, rute, jumlah, total bayar, dan ucapan terima kasih sebelum meminta pengguna menekan tombol Enter untuk melanjutkan.
+
+## 4. Riwayat Transaksi Saya
+
+<img width="158" height="120" alt="image" src="https://github.com/user-attachments/assets/0e851f12-fe0d-4aa8-8f00-3973eef2258c" />
+<br>
+<img width="590" height="147" alt="image" src="https://github.com/user-attachments/assets/406b8bba-94c9-46b8-8237-4cacd47c9133" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 4. Riwayat Transaksi Saya pada Menu User. Setelah pengguna memilih opsi nomor 4, sistem menampilkan tabel rekapitulasi daftar riwayat pembelian tiket yang pernah dilakukan oleh akun tersebut—meliputi kode transaksi, waktu, nama kereta, rute, jam, kelas, jumlah tiket, dan total biaya—serta meminta pengguna menekan tombol Enter untuk melanjutkan.
+
+## 5. Ubah Password
+
+<img width="163" height="112" alt="image" src="https://github.com/user-attachments/assets/06667613-fa3c-45bf-a877-c158628715aa" />
+<br>
+<img width="238" height="98" alt="image" src="https://github.com/user-attachments/assets/af9b0810-3efb-46e5-b66a-e6b1932064f4" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 5. Ubah Password pada Menu User. Setelah pengguna memilih opsi nomor 5, sistem meminta input password lama, password baru (minimal 6 karakter), serta konfirmasi ulangi password baru. Setelah validasi berhasil, sistem menampilkan pesan "Password berhasil diubah....." dan meminta pengguna menekan tombol Enter untuk melanjutkan.
+
+## 6. Log Out
+
+<img width="144" height="111" alt="image" src="https://github.com/user-attachments/assets/b18bea85-3aa9-4833-9add-abb6467c2497" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk opsi 0. Logout pada Menu User. Setelah pengguna memilih opsi 0, sistem memproses pengakhiran sesi aktif dari akun pengguna dan mengembalikan tampilan layar ke menu utama login sistem pemesanan tiket kereta api.
+
+
+
+
+
+
+
 
 
 
