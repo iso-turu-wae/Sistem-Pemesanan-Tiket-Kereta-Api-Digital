@@ -8,13 +8,21 @@ Program berbasis terminal yang dibuat menggunakan Python untuk mengelola dan mem
 
 <img width="2572" height="1612" alt="pa ddp-1  Menu Utama, Login, Registrasi, Menu Admin drawio" src="https://github.com/user-attachments/assets/7ee9d9aa-34c3-4f80-8777-095719ac3999" />
 
+Flowchart menu utama ini menggambarkan alur utama sistem pemesanan Tiket kereta api digital, mulai dari login, registrasi, hingga keluar. Pengguna dapat membuat akun baru atau masuk menggunakan akun yang sudah ada. Setelah login, sistem membedakan akses antara admin dan user sesuai perannya.
+
+Menu Admin
+
 ## CRUD Menu Admin
 
 <img width="3243" height="1422" alt="pa ddp-Menu Admin (2)" src="https://github.com/user-attachments/assets/edf11979-20c8-4e73-83cb-a04b342c7628" />
 
+flowchart ini menggambarkan alur kerja Menu Utama Admin yang menyediakan 10 fitur utama: pengelolaan jadwal perjalanan CRUD (melihat, menambah, mengubah, dan menghapus jadwal), pengelolaan akun pengguna/user (melihat, menambah, mengubah, dan menghapus data user), serta pemantauan riwayat semua transaksi dan pembuatan laporan ringkas, yang diakhiri dengan opsi keluar logout.
+
 ## Menu User
 
 <img width="2400" height="1600" alt="pa ddp-menu user" src="https://github.com/user-attachments/assets/fc8d2605-336b-4ab7-b9ed-67e811d5635e" />
+
+Flowchart  ini menggambarkan alur kerja Menu User yang menyediakan 6 pilihan utama: melihat jadwal perjalanan, pengisian saldo top up, pemesanan tiket, melihat riwayat transaksi pribadi, mengubah password akun, serta opsi keluar logout.
 
 
 
