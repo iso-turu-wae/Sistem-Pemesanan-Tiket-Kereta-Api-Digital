@@ -157,11 +157,15 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 3. Ubah Jadwal pada Menu
 <br>
 <img width="580" height="247" alt="Screenshot 2026-10-27 115502" src="https://github.com/user-attachments/assets/ab1936fe-31fb-4f9a-82ed-ad3532cbc1ab" />
 
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 4. Hapus Jadwal pada Menu Admin. Setelah memilih opsi ke-4, admin memasukkan kode tiket yang ingin dihapus (contohnya t08), lalu sistem meminta konfirmasi penghapusan ("y/n"). Setelah dikonfirmasi dengan y, sistem menghapus jadwal tersebut, menampilkan pesan "Jadwal berhasil dihapus.....", dan meminta pengguna menekan Enter untuk melanjutkan.
+
 ## 5. Lihat User
 
 <img width="422" height="158" alt="Screenshot 2026-10-31 210504" src="https://github.com/user-attachments/assets/73a09f9e-353f-4bb2-aebc-ba9ccd11f929" />
 <br>
 <img width="244" height="116" alt="Screenshot 2026-10-27 115744" src="https://github.com/user-attachments/assets/fb6bde66-4d5f-4ccd-b615-3fc29852801a" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 5. Lihat User pada Menu Admin. Setelah admin memilih opsi ke-5, sistem menampilkan daftar tabel berisi informasi seluruh pengguna yang terdaftar—meliputi nomor, username, peran (role), dan saldo masing-masing—serta meminta penekanan tombol Enter untuk melanjutkan.
 
 ## 6. Tambah User
 
@@ -169,11 +173,15 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 3. Ubah Jadwal pada Menu
 <br>
 <img width="371" height="130" alt="Screenshot 2026-10-31 210830" src="https://github.com/user-attachments/assets/4a73ad8d-a925-44b0-8611-514672a83dc2" />
 
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 6. Tambah User pada Menu Admin. Setelah admin memilih opsi ke-6, sistem meminta input username (minimal 5 karakter), password (minimal 6 karakter), pemilihan role (1 untuk user atau 2 untuk admin), serta saldo awal. Sistem kemudian memproses dan menampilkan pesan "User berhasil ditambahkan....." sebelum meminta pengguna menekan tombol Enter untuk melanjutkan.
+
 ## 7. Ubah User
 
 <img width="374" height="155" alt="Screenshot 2026-10-31 210938" src="https://github.com/user-attachments/assets/8b9a2ab5-4ba2-48d3-a2ae-169ab8b1dcad" />
 <br>
 <img width="409" height="185" alt="Screenshot 2026-10-31 211046" src="https://github.com/user-attachments/assets/5246cd66-5a2c-499d-8051-89a01c7cc6f4" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 7. Ubah User pada Menu Admin. Setelah admin memilih opsi ke-7, sistem menampilkan daftar tabel user, meminta input username yang ingin diubah, serta memungkinkan admin untuk memperbarui informasi seperti username baru, password baru, atau saldo. Sistem kemudian menampilkan pesan "saldo user berhasil diubah....." dan meminta penekanan tombol Enter untuk melanjutkan.
 
 ## 8. Hapus User
 
@@ -181,11 +189,15 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 3. Ubah Jadwal pada Menu
 <br>
 <img width="316" height="150" alt="Screenshot 2026-10-31 211403" src="https://github.com/user-attachments/assets/210ad091-fd5d-483f-a8ef-c80f7389c3e0" />
 
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 8. Hapus User pada Menu Admin. Setelah memilih opsi ke-8, sistem menampilkan daftar tabel user, meminta input username yang ingin dihapus (contohnya wisnu), serta meminta konfirmasi penghapusan dengan memasukkan y/n. Setelah dikonfirmasi dengan y, sistem menghapus akun tersebut, menampilkan pesan "User berhasil dihapus.....", dan meminta pengguna menekan tombol Enter untuk melanjutkan.
+
 ## 9. Riwayat Semua Transaksi
 
 <img width="353" height="151" alt="image" src="https://github.com/user-attachments/assets/a4fe71a5-36b4-4ee8-874c-da1b00e8536d" />
 <br>
 <img width="643" height="124" alt="image" src="https://github.com/user-attachments/assets/20b4386e-de84-4760-8037-1d8c2eec0cb9" />
+
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 9. Riwayat Semua Transaksi pada Menu Admin. Setelah admin memilih opsi ke-9, sistem menampilkan daftar tabel berisi rekapitulasi seluruh transaksi pengguna—meliputi kode transaksi, nama user, waktu, nama kereta, rute, jam, kelas, jumlah, dan total harga—serta meminta penekanan tombol Enter untuk melanjutkan.
 
 ## 10. Laporan Ringkas 
 
@@ -193,10 +205,14 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 3. Ubah Jadwal pada Menu
 <br>
 <img width="470" height="164" alt="image" src="https://github.com/user-attachments/assets/783ebf84-41f5-4bc7-a844-9ea1fb42757b" />
 
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 10. Laporan Ringkas pada Menu Admin. Setelah admin memilih opsi ke-10, sistem menampilkan rekapitulasi data yang mencakup total pendapatan, jumlah transaksi keseluruhan, informasi kereta terlaris, serta tabel rincian jumlah tiket terjual per kereta, lalu meminta penekanan tombol Enter untuk melanjutkan.
+
 ## 11. Logout
 
 <img width="365" height="151" alt="Screenshot 2026-10-31 212908" src="https://github.com/user-attachments/assets/2e9f672d-25ec-46a5-b79a-b89bdfc5de83" />
->
+
+Tampilan ini menunjukkan antarmuka terminal untuk opsi 11. Logout (atau pilihan angka 0 pada menu) pada Menu Admin. Setelah admin memilih opsi keluar tersebut, sistem akan memproses pengakhiran sesi aktif dan mengembalikan pengguna ke halaman utama login sistem.
+
 
 
 
