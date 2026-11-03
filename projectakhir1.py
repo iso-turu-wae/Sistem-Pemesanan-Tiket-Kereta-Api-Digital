@@ -91,7 +91,6 @@ def detekinput(wm):
         except ValueError as e:
             print(e)
 
-
 def detekangka(wm, minimal=0):
     while True:
         try:
@@ -302,7 +301,7 @@ def addjadwal(jadwalss):
         harga = detekangka("Harga tiket: ", 1)
         stok = detekangka("Stok kursi: ", 0)
         jadwalss.append({"Tiket": tikets, "nama": nama, "Dari": Dari, "Tujuan": tujuan,
-                         "Jam": jam, "kelas": KelasTiket[pilih - 1], "harga": harga, "stok": stok})
+                        "Jam": jam, "kelas": KelasTiket[pilih - 1], "harga": harga, "stok": stok})
         savedata(FileJadwall, jadwalss)
         print("Jadwal berhasil ditambahkan.")
     except ValueError as e:
@@ -558,10 +557,16 @@ def ubahpassword(user, users):
         lama = passaman("Password lama: ")
         if lama != user["password"]:
             raise ValueError("Password lama salah....")
-        baru = cekpassword(passaman("Password baru (min. 6 karakter): "))
-        ulang = passaman("Ulangi password baru: ")
-        if baru != ulang:
-            raise ValueError("Password baru gak sama....")
+        while True:
+            baru = cekpassword(passaman("Password baru (min. 6 karakter): "))
+            if baru == user["password"]:
+                print("Password baru boi bukan lama")
+                continue
+            ulang = passaman("Ulangi password baru: ")
+            if baru != ulang:
+                print("Password baru gak sama....")
+                continue
+            break
         user["password"] = baru
         savedata(FileUser, users)
         print("Password berhasil diubah.....")
@@ -604,7 +609,7 @@ def menuadmin(user, jadwal, users, riwayat):
             cleanterminal()
             print("=== MENU ADMIN ===")
             print("1. Lihat Jadwal\n2. Tambah Jadwal\n3. Ubah Jadwal\n4. Hapus Jadwal")
-            print("5. Lihat User\n6. Tambah User\n7. Ubah User\n8. Hapus User")
+            print("5. Lihat User\n6. Tambah Akun\n7. Ubah Akun\n8. Hapus Akun")
             print("9. Riwayat Semua Transaksi\n10. Laporan Ringkas\n0. Logout")
             pilih = inputaman("Pilih: ")
             cleanterminal()
