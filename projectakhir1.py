@@ -10,7 +10,6 @@ FileUser = "users.json"
 FileJadwall = "jadwal.json"
 FileRiwayat = "riwayat.json"
 
-
 KelasTiket = ("Ekonomi", "Bisnis", "Eksekutif")
 RoleUser = ("user", "admin")
 Akundefault = [{"username": "admin", "password": "admin123", "role": "admin", "saldo": 0}]
@@ -609,7 +608,7 @@ def menuadmin(user, jadwal, users, riwayat):
             cleanterminal()
             print("=== MENU ADMIN ===")
             print("1. Lihat Jadwal\n2. Tambah Jadwal\n3. Ubah Jadwal\n4. Hapus Jadwal")
-            print("5. Lihat User\n6. Tambah Akun\n7. Ubah Akun\n8. Hapus Akun")
+            print("5. Lihat Akun\n6. Tambah Akun\n7. Ubah Akun\n8. Hapus Akun")
             print("9. Riwayat Semua Transaksi\n10. Laporan Ringkas\n0. Logout")
             pilih = inputaman("Pilih: ")
             cleanterminal()
