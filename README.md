@@ -159,7 +159,7 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 3. Ubah Jadwal pada Menu
 
 Tampilan ini menunjukkan antarmuka terminal untuk fitur 4. Hapus Jadwal pada Menu Admin. Setelah memilih opsi ke-4, admin memasukkan kode tiket yang ingin dihapus (contohnya t08), lalu sistem meminta konfirmasi penghapusan ("y/n"). Setelah dikonfirmasi dengan y, sistem menghapus jadwal tersebut, menampilkan pesan "Jadwal berhasil dihapus.....", dan meminta pengguna menekan Enter untuk melanjutkan.
 
-## 5. Lihat User
+## 5. Lihat Akun
 
 <img width="422" height="158" alt="Screenshot 2026-10-31 210504" src="https://github.com/user-attachments/assets/73a09f9e-353f-4bb2-aebc-ba9ccd11f929" />
 <br>
@@ -167,7 +167,7 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 4. Hapus Jadwal pada Men
 
 Tampilan ini menunjukkan antarmuka terminal untuk fitur 5. Lihat User pada Menu Admin. Setelah admin memilih opsi ke-5, sistem menampilkan daftar tabel berisi informasi seluruh pengguna yang terdaftar—meliputi nomor, username, peran (role), dan saldo masing-masing—serta meminta penekanan tombol Enter untuk melanjutkan.
 
-## 6. Tambah User
+## 6. Tambah Akun
 
 <img width="419" height="152" alt="Screenshot 2026-10-31 210810" src="https://github.com/user-attachments/assets/8424ea5d-2b27-43eb-9c89-63bd1ae3761c" />
 <br>
@@ -175,7 +175,7 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 5. Lihat User pada Menu 
 
 Tampilan ini menunjukkan antarmuka terminal untuk fitur 6. Tambah User pada Menu Admin. Setelah admin memilih opsi ke-6, sistem meminta input username (minimal 5 karakter), password (minimal 6 karakter), pemilihan role (1 untuk user atau 2 untuk admin), serta saldo awal. Sistem kemudian memproses dan menampilkan pesan "User berhasil ditambahkan....." sebelum meminta pengguna menekan tombol Enter untuk melanjutkan.
 
-## 7. Ubah User
+## 7. Ubah Akun
 
 <img width="374" height="155" alt="Screenshot 2026-10-31 210938" src="https://github.com/user-attachments/assets/8b9a2ab5-4ba2-48d3-a2ae-169ab8b1dcad" />
 <br>
@@ -183,7 +183,7 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 6. Tambah User pada Menu
 
 Tampilan ini menunjukkan antarmuka terminal untuk fitur 7. Ubah User pada Menu Admin. Setelah admin memilih opsi ke-7, sistem menampilkan daftar tabel user, meminta input username yang ingin diubah, serta memungkinkan admin untuk memperbarui informasi seperti username baru, password baru, atau saldo. Sistem kemudian menampilkan pesan "saldo user berhasil diubah....." dan meminta penekanan tombol Enter untuk melanjutkan.
 
-## 8. Hapus User
+## 8. Hapus Akun
 
 <img width="338" height="146" alt="Screenshot 2026-10-31 211349" src="https://github.com/user-attachments/assets/040acbe3-a31c-428e-a8a4-5a870e0d2979" />
 <br>
