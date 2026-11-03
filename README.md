@@ -129,7 +129,7 @@ Tampilan ini menampilkan antarmuka berbasis terminal untuk alur Login Sebagai Ad
 
 ## 1.Lihat Jadwal
 
-<img width="205" height="152" alt="Screenshot 2026-10-31 210256" src="https://github.com/user-attachments/assets/0d2bc6f3-7263-42c9-b6b2-fbcbeda31f2e" />
+<img width="197" height="191" alt="Screenshot 2026-11-03 234205" src="https://github.com/user-attachments/assets/d89eff76-b8a5-4f15-a864-c36da9a1f952" />
 <br>
 <img width="625" height="170" alt="Screenshot 2026-10-27 114602" src="https://github.com/user-attachments/assets/4ae276cf-cc1e-4d55-8005-e7c40f20f62f" />
 
@@ -137,7 +137,7 @@ Tampilan ini menunjukkan antarmuka berbasis terminal untuk fitur 1. Lihat Jadwal
 
 ## 2.Tambah Jadwal
 
-<img width="366" height="154" alt="Screenshot 2026-10-31 210437" src="https://github.com/user-attachments/assets/1c8af3ac-9a2d-4c7b-96bd-27dc2dbbf003" />
+<img width="197" height="191" alt="Screenshot 2026-11-03 234205" src="https://github.com/user-attachments/assets/e0ff2b55-7be3-496c-912b-95e2c24be745" />
 <br>
 <img width="434" height="205" alt="Screenshot 2026-10-27 114920" src="https://github.com/user-attachments/assets/7ed367d6-25ec-41a1-b027-67ad4eb46b09" />
 
@@ -145,7 +145,7 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 2. Tambah Jadwal pada Me
 
 ## 3. ubah Jadwal
 
-<img width="291" height="151" alt="Screenshot 2026-10-31 210444" src="https://github.com/user-attachments/assets/9efcc726-febd-4e63-a77b-b5e683d6dfd0" />
+<img width="184" height="182" alt="Screenshot 2026-11-03 234216" src="https://github.com/user-attachments/assets/a57ab67d-b486-4bcd-965d-d1638a3aa44e" />
 <br>
 <img width="619" height="396" alt="Screenshot 2026-10-27 115307" src="https://github.com/user-attachments/assets/6cbcd163-997b-4d10-8e47-56be13db95c6" />
 
@@ -153,7 +153,7 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 3. Ubah Jadwal pada Menu
 
 ## 4. Hapus Jadwal
 
-<img width="354" height="150" alt="Screenshot 2026-10-31 210456" src="https://github.com/user-attachments/assets/545958cd-5c39-4725-a961-a039142c56ff" />
+<img width="191" height="181" alt="Screenshot 2026-11-03 234236" src="https://github.com/user-attachments/assets/1287a8f7-4239-4427-85bf-aeb59e76787c" />
 <br>
 <img width="580" height="247" alt="Screenshot 2026-10-27 115502" src="https://github.com/user-attachments/assets/ab1936fe-31fb-4f9a-82ed-ad3532cbc1ab" />
 
@@ -161,39 +161,39 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 4. Hapus Jadwal pada Men
 
 ## 5. Lihat Akun
 
-<img width="422" height="158" alt="Screenshot 2026-10-31 210504" src="https://github.com/user-attachments/assets/73a09f9e-353f-4bb2-aebc-ba9ccd11f929" />
+<img width="175" height="185" alt="Screenshot 2026-11-03 234245" src="https://github.com/user-attachments/assets/d506a4d7-7283-4ace-8330-6ce03e0380e0" />
 <br>
 <img width="244" height="116" alt="Screenshot 2026-10-27 115744" src="https://github.com/user-attachments/assets/fb6bde66-4d5f-4ccd-b615-3fc29852801a" />
 
-Tampilan ini menunjukkan antarmuka terminal untuk fitur 5. Lihat User pada Menu Admin. Setelah admin memilih opsi ke-5, sistem menampilkan daftar tabel berisi informasi seluruh pengguna yang terdaftar—meliputi nomor, username, peran (role), dan saldo masing-masing—serta meminta penekanan tombol Enter untuk melanjutkan.
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 5. Lihat Akun pada Menu Admin. Setelah admin memilih opsi ke-5, sistem menampilkan daftar tabel berisi informasi seluruh pengguna yang terdaftar—meliputi nomor, username, peran (role), dan saldo masing-masing—serta meminta penekanan tombol Enter untuk melanjutkan.
 
 ## 6. Tambah Akun
 
-<img width="419" height="152" alt="Screenshot 2026-10-31 210810" src="https://github.com/user-attachments/assets/8424ea5d-2b27-43eb-9c89-63bd1ae3761c" />
+<img width="185" height="190" alt="Screenshot 2026-11-03 234303" src="https://github.com/user-attachments/assets/fb51dd23-c721-490a-9393-b164a0d2ea0f" />
 <br>
 <img width="371" height="130" alt="Screenshot 2026-10-31 210830" src="https://github.com/user-attachments/assets/4a73ad8d-a925-44b0-8611-514672a83dc2" />
 
-Tampilan ini menunjukkan antarmuka terminal untuk fitur 6. Tambah User pada Menu Admin. Setelah admin memilih opsi ke-6, sistem meminta input username (minimal 5 karakter), password (minimal 6 karakter), pemilihan role (1 untuk user atau 2 untuk admin), serta saldo awal. Sistem kemudian memproses dan menampilkan pesan "User berhasil ditambahkan....." sebelum meminta pengguna menekan tombol Enter untuk melanjutkan.
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 6. Tambah Akun pada Menu Admin. Setelah admin memilih opsi ke-6, sistem meminta input username (minimal 5 karakter), password (minimal 6 karakter), pemilihan role (1 untuk user atau 2 untuk admin), serta saldo awal. Sistem kemudian memproses dan menampilkan pesan "User berhasil ditambahkan....." sebelum meminta pengguna menekan tombol Enter untuk melanjutkan.
 
 ## 7. Ubah Akun
 
-<img width="374" height="155" alt="Screenshot 2026-10-31 210938" src="https://github.com/user-attachments/assets/8b9a2ab5-4ba2-48d3-a2ae-169ab8b1dcad" />
+<img width="181" height="188" alt="Screenshot 2026-11-03 234313" src="https://github.com/user-attachments/assets/09b59594-dd9d-4418-b37e-eb28b6e50511" />
 <br>
 <img width="409" height="185" alt="Screenshot 2026-10-31 211046" src="https://github.com/user-attachments/assets/5246cd66-5a2c-499d-8051-89a01c7cc6f4" />
 
-Tampilan ini menunjukkan antarmuka terminal untuk fitur 7. Ubah User pada Menu Admin. Setelah admin memilih opsi ke-7, sistem menampilkan daftar tabel user, meminta input username yang ingin diubah, serta memungkinkan admin untuk memperbarui informasi seperti username baru, password baru, atau saldo. Sistem kemudian menampilkan pesan "saldo user berhasil diubah....." dan meminta penekanan tombol Enter untuk melanjutkan.
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 7. Ubah Akun pada Menu Admin. Setelah admin memilih opsi ke-7, sistem menampilkan daftar tabel akun, meminta input username yang ingin diubah, serta memungkinkan admin untuk memperbarui informasi seperti username baru, password baru, atau saldo. Sistem kemudian menampilkan pesan "saldo user berhasil diubah....." dan meminta penekanan tombol Enter untuk melanjutkan.
 
 ## 8. Hapus Akun
 
-<img width="338" height="146" alt="Screenshot 2026-10-31 211349" src="https://github.com/user-attachments/assets/040acbe3-a31c-428e-a8a4-5a870e0d2979" />
+<img width="197" height="180" alt="Screenshot 2026-11-03 234543" src="https://github.com/user-attachments/assets/832dfbc5-7895-4106-8f5b-b35da9bf08d0" />
 <br>
 <img width="316" height="150" alt="Screenshot 2026-10-31 211403" src="https://github.com/user-attachments/assets/210ad091-fd5d-483f-a8ef-c80f7389c3e0" />
 
-Tampilan ini menunjukkan antarmuka terminal untuk fitur 8. Hapus User pada Menu Admin. Setelah memilih opsi ke-8, sistem menampilkan daftar tabel user, meminta input username yang ingin dihapus (contohnya wisnu), serta meminta konfirmasi penghapusan dengan memasukkan y/n. Setelah dikonfirmasi dengan y, sistem menghapus akun tersebut, menampilkan pesan "User berhasil dihapus.....", dan meminta pengguna menekan tombol Enter untuk melanjutkan.
+Tampilan ini menunjukkan antarmuka terminal untuk fitur 8. Hapus Akun pada Menu Admin. Setelah memilih opsi ke-8, sistem menampilkan daftar tabel akun, meminta input username yang ingin dihapus (contohnya wisnu), serta meminta konfirmasi penghapusan dengan memasukkan y/n. Setelah dikonfirmasi dengan y, sistem menghapus akun tersebut, menampilkan pesan "User berhasil dihapus.....", dan meminta pengguna menekan tombol Enter untuk melanjutkan.
 
 ## 9. Riwayat Semua Transaksi
 
-<img width="353" height="151" alt="image" src="https://github.com/user-attachments/assets/a4fe71a5-36b4-4ee8-874c-da1b00e8536d" />
+<img width="168" height="181" alt="Screenshot 2026-11-03 234559" src="https://github.com/user-attachments/assets/8c12af41-8f67-4773-9ae7-68a5c67f67ab" />
 <br>
 <img width="643" height="124" alt="image" src="https://github.com/user-attachments/assets/20b4386e-de84-4760-8037-1d8c2eec0cb9" />
 
@@ -201,7 +201,7 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 9. Riwayat Semua Transak
 
 ## 10. Laporan Ringkas 
 
-<img width="345" height="162" alt="Screenshot 2026-10-31 212221" src="https://github.com/user-attachments/assets/66b5b4c0-0d3f-42c1-89a1-c90383d8e04f" />
+<img width="168" height="179" alt="Screenshot 2026-11-03 234622" src="https://github.com/user-attachments/assets/307e62c1-ae07-4ad7-8939-bb3c4efb8c28" />
 <br>
 <img width="470" height="164" alt="image" src="https://github.com/user-attachments/assets/783ebf84-41f5-4bc7-a844-9ea1fb42757b" />
 
@@ -209,7 +209,7 @@ Tampilan ini menunjukkan antarmuka terminal untuk fitur 10. Laporan Ringkas pada
 
 ## 11. Logout
 
-<img width="365" height="151" alt="Screenshot 2026-10-31 212908" src="https://github.com/user-attachments/assets/2e9f672d-25ec-46a5-b79a-b89bdfc5de83" />
+<img width="185" height="186" alt="Screenshot 2026-11-03 234631" src="https://github.com/user-attachments/assets/cc13dac9-05ce-4eef-812a-f81a889d9e40" />
 
 Tampilan ini menunjukkan antarmuka terminal untuk opsi 11. Logout (atau pilihan angka 0 pada menu) pada Menu Admin. Setelah admin memilih opsi keluar tersebut, sistem akan memproses pengakhiran sesi aktif dan mengembalikan pengguna ke halaman utama login sistem.
 
