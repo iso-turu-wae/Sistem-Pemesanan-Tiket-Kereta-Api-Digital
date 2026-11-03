@@ -382,7 +382,7 @@ def hapusjadwal(jadwalss):
 # ================== CRUD USER (ADMIN) ==================
 
 def tambahuser(users):
-    print("=== TAMBAH USER ===")
+    print("=== TAMBAH AKUN ===")
     try:
         username = cekusername(users, inputaman("Username (min 5 karakter): "))
         password = cekpassword(passaman("Password (min. 6 karakter): "))
@@ -405,7 +405,7 @@ def tambahuser(users):
     return users
 
 def ubahuser(users, riwayat):
-    print("=== UBAH USER ===")
+    print("=== UBAH AKUN ===")
     try:
         tampilanUser(users)
         o = deteksiuser(users, "username", detekinput("Username yang mau diubah: "))
@@ -447,7 +447,7 @@ def ubahuser(users, riwayat):
     return users
 
 def hapususer(users, admin):
-    print("=== HAPUS USER ===")
+    print("=== HAPUS AKUN ===")
     try:
         tampilanUser(users)
         o = deteksiuser(users, "username", detekinput("Username yang mau dihapus: "))
