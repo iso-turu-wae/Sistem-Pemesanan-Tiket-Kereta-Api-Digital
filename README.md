@@ -6,21 +6,20 @@ Program berbasis terminal yang dibuat menggunakan Python untuk mengelola dan mem
 
 ## Menu Utama
 
-<img width="2572" height="1612" alt="pa ddp-1  Menu Utama, Login, Registrasi, Menu Admin drawio" src="https://github.com/user-attachments/assets/7ee9d9aa-34c3-4f80-8777-095719ac3999" />
+<img width="2162" height="1732" alt="pa ddprr-1  Menu Utama, Login, Registrasi, Menu Admin" src="https://github.com/user-attachments/assets/3bd92a25-a3ee-4643-8c10-0ac409ba985c" />
 
 Flowchart menu utama ini menggambarkan alur utama sistem pemesanan Tiket kereta api digital, mulai dari login, registrasi, hingga keluar. Pengguna dapat membuat akun baru atau masuk menggunakan akun yang sudah ada. Setelah login, sistem membedakan akses antara admin dan user sesuai perannya.
 
-Menu Admin
-
 ## CRUD Menu Admin
 
-<img width="3243" height="1422" alt="pa ddp-Menu Admin (2)" src="https://github.com/user-attachments/assets/edf11979-20c8-4e73-83cb-a04b342c7628" />
+<img width="3783" height="1772" alt="pa ddprr-Menu Admin" src="https://github.com/user-attachments/assets/b8f590b0-9e93-4f4d-8d2c-9f9da351dca6" />
 
 flowchart ini menggambarkan alur kerja Menu Utama Admin yang menyediakan 10 fitur utama: pengelolaan jadwal perjalanan CRUD (melihat, menambah, mengubah, dan menghapus jadwal), pengelolaan akun pengguna/user (melihat, menambah, mengubah, dan menghapus data user), serta pemantauan riwayat semua transaksi dan pembuatan laporan ringkas, yang diakhiri dengan opsi keluar logout.
 
 ## Menu User
 
-<img width="2400" height="1600" alt="pa ddp-menu user" src="https://github.com/user-attachments/assets/fc8d2605-336b-4ab7-b9ed-67e811d5635e" />
+<img width="2323" height="1515" alt="pa ddprr-menu user" src="https://github.com/user-attachments/assets/265d048f-e3b9-4f8e-90ec-778906421ef5" />
+
 
 Flowchart  ini menggambarkan alur kerja Menu User yang menyediakan 6 pilihan utama: melihat jadwal perjalanan, pengisian saldo top up, pemesanan tiket, melihat riwayat transaksi pribadi, mengubah password akun, serta opsi keluar logout.
 
@@ -33,7 +32,7 @@ Flowchart  ini menggambarkan alur kerja Menu User yang menyediakan 6 pilihan uta
 | 1 | Ignatius Imanuel Saroha Simalango | 2609116029 | Laporan & Pemrograman |
 | 2 | Wisnu Aji| 2609116022 | Flowchart , Bug hunt|
 | 3 | Muhammad Royyan| 2609116005 | Buat laporan, Flowchart, Pemrograman|
-| 4 | Aura Rizki Tariti | 2609116032 |
+| 4 | Aura Rizki Tariti | 2609116032 | Menjelaskan Program Di Flowchart, Flowchart
 
 ## Deskripsi & Tujuan
 
