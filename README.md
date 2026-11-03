@@ -12,10 +12,10 @@ Flowchart menu utama ini menggambarkan alur utama sistem pemesanan Tiket kereta 
 
 ## CRUD Menu Admin
 
-<img width="3782" height="1772" alt="pa ddprr-Menu Admin drawio (2)" src="https://github.com/user-attachments/assets/2a1374d1-7d72-425b-8f96-9518b189ec36" />
+<img width="3782" height="1772" alt="pa ddprr-Menu Admin drawio (4)" src="https://github.com/user-attachments/assets/9f122f10-8fdd-4fcb-909c-be3ce4afe892" />
 
 
-flowchart ini menggambarkan alur kerja Menu Utama Admin yang menyediakan 10 fitur utama: pengelolaan jadwal perjalanan CRUD (melihat, menambah, mengubah, dan menghapus jadwal), pengelolaan akun pengguna/user (melihat, menambah, mengubah, dan menghapus data user), serta pemantauan riwayat semua transaksi dan pembuatan laporan ringkas, yang diakhiri dengan opsi keluar logout.
+flowchart ini menggambarkan alur kerja Menu Utama Admin yang menyediakan 10 fitur utama: pengelolaan jadwal perjalanan CRUD (melihat, menambah, mengubah, dan menghapus jadwal), pengelolaan akun pengguna/user (melihat, menambah, mengubah, dan menghapus data akun), serta pemantauan riwayat semua transaksi dan pembuatan laporan ringkas, yang diakhiri dengan opsi keluar logout.
 
 ## Menu User
 
